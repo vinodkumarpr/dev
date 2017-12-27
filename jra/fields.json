@@ -1,0 +1,105 @@
+[
+    {
+        "fieldTitle": "Key",
+        "jiraFieldName": "key",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Status",
+        "jiraFieldName": "status",
+        "property": "name",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Resolution",
+        "jiraFieldName": "resolution",
+        "property": "name",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Created",
+        "jiraFieldName": "created",
+        "type": "date"
+    },
+    {
+        "fieldTitle": "Labels",
+        "jiraFieldName": "labels",
+        "property": "array",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Creator",
+        "jiraFieldName": "creator",
+        "property": "displayName",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Assignee",
+        "jiraFieldName": "assignee",
+        "property": "displayName",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Summary",
+        "jiraFieldName": "summary",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Resolved",
+        "jiraFieldName": "resolutiondate",
+        "type": "date"
+    },
+    {
+        "fieldTitle": "Updated",
+        "jiraFieldName": "updated",
+        "type": "date"
+    },
+    {
+        "fieldTitle": "Ticket Classification",
+        "jiraFieldName": "customfield_10901",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket Created By",
+        "jiraFieldName": "customfield_10900",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket Genesis",
+        "jiraFieldName": "customfield_10902",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket Resolved By",
+        "jiraFieldName": "customfield_10903",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket On-Air Effect",
+        "jiraFieldName": "customfield_10904",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket Root Cause Fixed",
+        "jiraFieldName": "customfield_10905",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket Severity",
+        "jiraFieldName": "customfield_10906",
+        "property": "value",
+        "type": "string"
+    },
+    {
+        "fieldTitle": "Ticket Priority",
+        "jiraFieldName": "customfield_10907",
+        "property": "value",
+        "type": "string"
+    }
+]
