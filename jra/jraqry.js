@@ -1,52 +1,74 @@
+"use strict";
+
 var request = require("request");
 var fs = require('fs');
-
 var csvWriter = require('csv-write-stream')
 
 
-var host = "https://jira.amagi.tv";
-var searchPath = "/rest/api/2/search";
+var url = "https://jira.amagi.tv/rest/api/2/search";
 var fieldConfigs = require("./fields.json");
+var authText = 'Basic dmlub2RwcjpCYW5nYWxvcmVAMjAwMQ==';
+
+var received = 0;
+var total = 0;
+var writer;
+var queryText = "";
 
 function getJiraIssues(query, filename) {
-
+    queryText = query;
     var data = {
         "jql": query,
         "maxResults" : 1000,
-        'startAt':0
+        'startAt': 0
     };
-
-    url = host + searchPath;
-
     var options = {
         'url': url,
         'method': 'POST',
         'json': data,
         'headers': {
-            'Authorization' : 'Basic dmlub2RwcjpCYW5nYWxvcmVAMjAwMQ=='
+            'Authorization' : authText
         }
     };
+    
+    writer = openCSVFile(filename, fieldConfigs);
 
-    request(options,  function(error, response, body) {
-        if (!error && response.statusCode === 200) {
+    request(options, responseHandler);
+}
 
-            var str = JSON.stringify(body);
-            fs.writeFile("body-str-10-1.json", str, function(err) {
-                if (err){
-                    console.log(err);
+function responseHandler(error, response, body) {
+    if (!error && response.statusCode === 200) {
+        var str = JSON.stringify(body);
+
+        var result = JSON.parse(str);
+        var issues = result["issues"];
+        total = result["total"];
+
+        writeJiraIssues(writer, received + 1, issues, fieldConfigs);  
+        received += issues.length;
+        console.log("Received : " + received + ", Total : " + total);
+        if (received < total) {
+            var data = {
+                "jql": queryText,
+                "maxResults" : 1000,
+                'startAt': received
+            };
+            var options = {
+                'url': url,
+                'method': 'POST',
+                'json': data,
+                'headers': {
+                    'Authorization' : authText
                 }
-            });
-
-            //console.log(str);
-            var result = JSON.parse(str);
-            issues = result["issues"];
-            writeJiraIssues(filename, issues, fieldConfigs);        
+            };
+            request(options, responseHandler);
         } else {
-            console.log("Error: " + error);
-            console.log("Status Code: " + response.statusCode);
-            console.log("Status Text: " + response.statusText);
+            writer.end();
+            console.log("Received all");
         }
-    });
+    } else {
+        writer.end();
+        console.log("Error occurred, Status : " + response.statusCode);
+    }
 }
 
 function _getJiraIssues(query, filename) {
@@ -57,7 +79,7 @@ function _getJiraIssues(query, filename) {
     });
 }
 
-function writeJiraIssues(filename, issues, fieldConfigs) {
+function openCSVFile(filename, fieldConfigs) {
     var titleCols = getTitleColumns(fieldConfigs);
     var csvWriterOpts = {
         'separator': ',',
@@ -66,27 +88,29 @@ function writeJiraIssues(filename, issues, fieldConfigs) {
         'sendHeaders': true
       };
 
-    console.log(titleCols);
     var writer = csvWriter(csvWriterOpts);
 
     writer.pipe(fs.createWriteStream(filename));
-    var index = 1;
-    for (issue in issues) {
-        issueFields = getIssueFields(issues[issue], index, fieldConfigs);
+
+    return writer;
+}
+
+
+function writeJiraIssues(writer, index, issues, fieldConfigs) {
+    for (var issue in issues) {
+        var issueFields = getIssueFields(issues[issue], index, fieldConfigs);
         writer.write(issueFields);
-        console.log(issueFields);
         index++;
     }
-    writer.end();
 }
 
 function getTitleColumns(fieldConfigs) {
-    values = [];
-    added = 0;
+    var values = [];
+    var added = 0;
     values[added++] = "Sl. No.";
-    for (item in fieldConfigs) {
-        fieldConfig = fieldConfigs[item];
-        fieldTitle = fieldConfig["fieldTitle"];
+    for (var item in fieldConfigs) {
+        var fieldConfig = fieldConfigs[item];
+        var fieldTitle = fieldConfig["fieldTitle"];
         values[added++] = fieldTitle;
     }
 
@@ -98,18 +122,20 @@ function getIssueFields(issue, index, fieldConfigs) {
     var added = 0;
     values[added++] = index;
     values[added++] = issue['key'];
-    fields = issue['fields'];
-    for (item in fieldConfigs) {
-        fieldConfig = fieldConfigs[item];
-        fieldTitle = fieldConfig["fieldTitle"];
-        jiraFieldName = fieldConfig["jiraFieldName"];
-        property = fieldConfig["property"];
-        type = fieldConfig["type"];
+    var fields = issue['fields'];
+    for (var item in fieldConfigs) {
+        var fieldConfig = fieldConfigs[item];
+        var fieldTitle = fieldConfig["fieldTitle"];
+        var jiraFieldName = fieldConfig["jiraFieldName"];
+        var property = fieldConfig["property"];
+        var type = fieldConfig["type"];
+        
+        var value;
 
         if (property == undefined) {
             value = valueToString(fields[jiraFieldName], type);
         } else {
-            propval = fields[jiraFieldName];
+            var propval = fields[jiraFieldName];
             if (propval != undefined) {
                 value = valueToString(propval[property], type);
             } else {
@@ -137,7 +163,7 @@ function valueToString(value, type) {
 }
 
 function getFormattedDateString(dateString) {
-    date = new Date(dateString);
+    var date = new Date(dateString);
     return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
 }
 

@@ -1,0 +1,17 @@
+{
+  "name": "node-amg-jira-query",
+  "version": "1.0.0",
+  "description": "amg jira query",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "amg",
+  "license": "None",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "request": "^2.83.0",
+    "csv-write-stream": "^2.0.0"
+  },
+  "keywords": []
+}
