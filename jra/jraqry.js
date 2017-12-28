@@ -7,7 +7,7 @@ var csvWriter = require('csv-write-stream')
 
 var url = "https://jira.amagi.tv/rest/api/2/search";
 var fieldConfigs = require("./fields.json");
-var authText = 'Basic dmlub2RwcjpCYW5nYWxvcmVAMjAwMQ==';
+var authText = 'To be added';
 
 var received = 0;
 var total = 0;
