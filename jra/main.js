@@ -24,7 +24,7 @@ if (output == undefined || query == undefined){
 } else {
     console.log("Output : " + output);
     console.log("Query : " + query);
-    require('./jraqry.js')(query, output);
+    require('./jiraqry.js')(query, output);
 }
 
 
