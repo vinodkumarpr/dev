@@ -1,0 +1,25 @@
+{
+  "name": "rct-wrds",
+  "version": "1.0.0",
+  "description": "React project for 'Words'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^0.14.0-beta3",
+    "react-dom": "^0.14.0-beta3"
+  }
+}
