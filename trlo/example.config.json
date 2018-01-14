@@ -1,5 +1,7 @@
 {
-    "authToken": "",
-    "apiKey": "",
-    "board": ""
+    "authToken": "AUTH TOKEN",
+    "apiKey": "API KEY",
+    "board": "BOARD ID"
 }
+
+
