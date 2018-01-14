@@ -1,7 +1,7 @@
 var Word = require("./word.js")
 
 class Questions {
-    constructor(wordlist){
+    constructor(wordlist, numQuestions){
         this.wordlist = wordlist;
     }
     report(){
