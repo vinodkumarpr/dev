@@ -18,9 +18,8 @@ function getRandomizedList(frequencies, count){
             var item = Math.floor(Math.random() * buckets.length);
             if (buckets.hasOwnProperty(item)) {
                 list.push(buckets[item].key);
-                buckets[item].used = buckets[item].used + 1;
-                if (buckets[item].used == buckets[item].count){
-                    buckets = removeBucket(buckets, buckets[item].key);
+                if (++(buckets[item].used) == buckets[item].count){
+                    buckets = buckets.filter(element => element.key !== buckets[item].key);
                 }
                 done = true;    
             }
@@ -32,7 +31,7 @@ function getRandomizedList(frequencies, count){
         } while (!done);
     }
 
-    remaining = count - list.length;
+    var remaining = count - list.length;
     for(i = 0; i < remaining; i++) {
         item = Math.floor(Math.random() * frequencies.length);
         list[list.length] = item;
@@ -41,17 +40,10 @@ function getRandomizedList(frequencies, count){
     return list;
 }
 
-function removeBucket(buckets, key){
-    buckets = buckets.filter(element => {
-        return element.key !== key;
-    });
-
-    return buckets;
-}
 
 function getTotalItemsCount(buckets){
     var total = 0;
-    buckets = buckets.forEach(element => {
+    buckets.forEach(element => {
         total += element.count;
     });
     return total;
