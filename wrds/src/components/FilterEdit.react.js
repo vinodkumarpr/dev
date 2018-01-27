@@ -8,6 +8,10 @@ var FilterEdit = React.createClass({
     handleOnChange: function (event) {
         this.props.onApplyFilter(event.target.value);
     },
+    handleOnQuizBtnClicked: function() {
+        console.log("handleOnQuizBtnClicked");
+        this.props.onQuizLaunch();
+    },
     render: function () {
         return (
             <div className="container-fluid">
@@ -16,7 +20,7 @@ var FilterEdit = React.createClass({
                         <label className="control-label input-group-addon" htmlFor="filterInput" style={itemTextStyle}>Search</label>
                         <input className="form-control" id="filterInput" type="text" onChange={this.handleOnChange} />
                         <span className="input-group-btn">
-                            <button type="button" className="btn btn-primary">Quiz</button>
+                            <button type="button" className="btn btn-primary" onClick={this.handleOnQuizBtnClicked}>Quiz</button>
                         </span>
                     </div>
                 </div>
