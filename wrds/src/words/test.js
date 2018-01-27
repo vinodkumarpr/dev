@@ -1,5 +1,14 @@
 var randomizer = require("./randomizer.js")
+var words = require("./words.js")
 var questionselection = require("../../data/questionselection.json")
+var questions = require("./questions.js")
+
+function testGetQuestions(){
+    var wordlist = words.getWordList();
+    var numQuestions = wordlist.length < 50 ?  wordlist.length : 50;
+    var list = randomizer.getRandomizedList(words.getWordList(), numQuestions);
+    questions.getQuestions(list, numQuestions);
+}
 
 function fill(count){
     var list = [];
@@ -12,7 +21,7 @@ function testRandomList(){
     var lists = [];
     var trials = 50;
     var listSize = 10;
-    var count = 5;
+    var count = 10;
 
     for (var i = 0; i < trials; i++) {
         lists.push(randomizer.getRandomizedList(fill(listSize), count));
@@ -68,4 +77,5 @@ function* seqMaker(count) {
 }
 
 //testFrequencyFill();
-testRandomList();
+//testRandomList();
+testGetQuestions();
