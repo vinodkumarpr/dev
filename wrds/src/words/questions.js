@@ -47,11 +47,14 @@ function printQuestion(question) {
     console.log("answer is : " + question.answer.answer);
 }
 
-function isValidQuestion(question){
+function isValidQuestion(question) {
     if (!question) return false;
     if (question.answer.options.length < NumberOfAnswerOptions) return false;
+    var found = question.answer.options.find(function (option) {
+        return !(option);
+    });
 
-    return true;
+    return !found;
 }
 
 function makeQuestion(word, questiontype, answertype) {
