@@ -4,6 +4,7 @@ var words = require("../words/words.js")
 var FilterEdit = require('./FilterEdit.react');
 var WordList = require('./WordList.react');
 var DisplayWord = require('./DisplayWord.react');
+var Quiz = require('./Quiz.react');
 
 var Application = React.createClass({
     getInitialState: function () {
@@ -64,9 +65,9 @@ var Application = React.createClass({
     render: function () {
         var rightDisplay;
         if (this.state.display == "quiz") {
-            rightDisplay = this.state.selectedWord ? this.state.selectedWord.word() : "Quiz...";
+            rightDisplay = <Quiz/>;
         } else {
-            rightDisplay = <DisplayWord word={this.state.selectedWord} />
+            rightDisplay = <DisplayWord word={this.state.selectedWord} />;
         }
         return (
             <div className="container-fluid">

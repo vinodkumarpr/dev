@@ -9,7 +9,6 @@ var FilterEdit = React.createClass({
         this.props.onApplyFilter(event.target.value);
     },
     handleOnQuizBtnClicked: function() {
-        console.log("handleOnQuizBtnClicked");
         this.props.onQuizLaunch();
     },
     render: function () {

@@ -33,8 +33,11 @@ function getQuestions(wordlist, numQuestions) {
 
         if (isValidQuestion(question)) {
             printQuestion(question);
+            questions.push(question);
         }
     }
+
+    return questions;
 }
 
 function printQuestion(question) {

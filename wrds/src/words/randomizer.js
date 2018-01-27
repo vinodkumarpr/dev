@@ -23,7 +23,7 @@ function getFrequencyFilledList(frequencies, count){
         var safteyCount = count * 3;
 
         do {
-            done = false;
+            var done = false;
             var item = Math.floor(Math.random() * buckets.length);
             if (buckets.hasOwnProperty(item)) {
                 list.push(buckets[item].key);
@@ -56,10 +56,10 @@ function getBucketItemsCount(buckets){
 }
 
 function getItemBuckets(frequencies, count){
-    buckets = [];
+    var buckets = [];
     var added = 0;
     frequencies.forEach(frequency => {
-        numItems = Math.round(frequency * count);
+        var numItems = Math.round(frequency * count);
         buckets.push({
             "key": added++,
             "frequency":frequency,
@@ -72,7 +72,7 @@ function getItemBuckets(frequencies, count){
 }
 
 function printListStat(list){
-    counts = {};
+    var counts = {};
     
     list.forEach(item => {
         if (counts[item]){
