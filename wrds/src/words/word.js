@@ -38,16 +38,16 @@ class Word {
     }
 
     synonymQuestionOptions(){
-        return this.getValueAsList('QSYN') + this.getValueAsList('QSYN2');
+        return this.getValueAsList('QSYN').concat(this.getValueAsList('QSYN2'));
     }
         
     
     antonymQuestionOptions(){
-        return this.getValueAsList('QANT') + this.getValueAsList('QANT2');    
+        return this.getValueAsList('QANT').concat(this.getValueAsList('QANT2'));
     }
     
     sentenceQuestions(){
-        return this.getValueAsList('QS') + this.getValueAsList('QS2');
+        return this.getValueAsList('QS').concat(this.getValueAsList('QS2'));
     }
     
     getValue(name) {

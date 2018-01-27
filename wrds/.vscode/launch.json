@@ -13,6 +13,12 @@
             "runtimeArgs": [
                 "--allow-file-access-from-files"
             ]
-        }
+        }//,
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "program": "${workspaceFolder}/src/words/test.js"
+        // }
     ]
 }

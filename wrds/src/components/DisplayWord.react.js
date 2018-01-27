@@ -1,5 +1,15 @@
 var React = require('react');
 
+var itemTextStyle = {
+     "fontFamily": "Times New Roman, sans-serif" 
+};
+
+var titleTextStyle = {
+    "fontFamily": "Times New Roman, sans-serif" ,
+    "fontWeight": "bold",
+    "background": "#ffff0"
+}; 
+
 var DisplayWord = React.createClass({
     formatText: function(text){
         text = text.replace("<", "0xFFFF");
@@ -13,14 +23,14 @@ var DisplayWord = React.createClass({
         var items = null;
         if (list.length > 0) {
             items = list.map((item) => {
-                return <li><span dangerouslySetInnerHTML={{__html: this.formatText(item)}}></span></li>;
+                return <li style={itemTextStyle}><span dangerouslySetInnerHTML={{__html: this.formatText(item)}}></span></li>;
             });    
         } else {
             items = <li>None</li>;
         }
 
         return (<div>
-            {title}
+            <div style={titleTextStyle}> <strong> {title} </strong> </div>
             <ul className="list-inline">
                 {items}
             </ul>
@@ -48,7 +58,7 @@ var DisplayWord = React.createClass({
         });
 
         return (
-            <ul className="list-group" style={{ margin: '10px' }} >{listItems}</ul>
+            <ul className="list-group" style={{ margin: '20px' }} >{listItems}</ul>
         );
     }
 });

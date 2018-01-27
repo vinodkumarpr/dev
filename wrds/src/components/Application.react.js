@@ -4,6 +4,7 @@ var words = require("../words/words.js")
 var FilterEdit = require('./FilterEdit.react');
 var WordList = require('./WordList.react');
 var DisplayWord = require('./DisplayWord.react');
+var Quiz = require('./Quiz.react');
 
 var Application = React.createClass({
     getInitialState: function () {
@@ -11,7 +12,8 @@ var Application = React.createClass({
             collectionWords: [],
             filteredWords: [],
             filter: "",
-            selectedWord: null
+            selectedWord: null,
+            display: "word"
         };
     },
     applyFilter: function (filter) {
@@ -37,9 +39,15 @@ var Application = React.createClass({
                 return (word == item.word());
             });
             this.setState({
-                selectedWord: selectedWord
+                selectedWord: selectedWord,
+                display: "word"
             });
         }
+    },
+    launchQuiz:function () {
+        this.setState({
+            display: "quiz"
+        });
     },
     componentWillMount: function () {
         var wordlist = words.getWordList();
@@ -51,18 +59,25 @@ var Application = React.createClass({
     shouldComponentUpdate: function (nextProps, nextState) {
         var changed = !(this.state.filteredWords === nextState.fiteredWords);
         changed = (changed || !(this.state.selectedWord === nextState.selectedWord));
+        changed = (changed || this.state.display != nextState.display);
         return changed;
     },
     render: function () {
+        var rightDisplay;
+        if (this.state.display == "quiz") {
+            rightDisplay = <Quiz/>;
+        } else {
+            rightDisplay = <DisplayWord word={this.state.selectedWord} />;
+        }
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-4" style={{ backgroundColor: '#f0f0f0', margin: 10, height: 'calc(100vh - 20px)', overflowY: 'scroll' }}>
-                        <FilterEdit onApplyFilter={this.applyFilter} />
+                        <FilterEdit onApplyFilter={this.applyFilter} onQuizLaunch={this.launchQuiz} />
                         <WordList words={this.state.filteredWords} onItemClick={this.onWordSelected} selectedWord={this.state.selectedWord} />
                     </div>
                     <div className="col-md-7" style={{ backgroundColor: '#f0f0f0', margin: 10, height: 'calc(100vh - 20px)' }}>
-                        <DisplayWord word={this.state.selectedWord} />
+                        {rightDisplay}
                     </div>
                 </div>
             </div>

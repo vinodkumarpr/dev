@@ -12,7 +12,7 @@ gulp.task('build', function () {
 });
 
 gulp.task('copy', function () {
-    return gulp.src('./build/wrds-app.js').pipe(gulp.dest('../electron-quick-start/'));
+    return gulp.src('./build/wrds-app.js').pipe(gulp.dest('../../../smpls/electron-quick-start/'));
   });
 
 gulp.task('default', ['build'/*, 'copy'*/]);

@@ -1,4 +1,5 @@
 var Word = require("./word.js")
+var Word = require("./word.js")
 
 function getWordList(){
     var wordlist = [];
