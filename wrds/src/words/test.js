@@ -1,18 +1,43 @@
 var randomizer = require("./randomizer.js")
-var questions = require("../../data/questions.json")
+var questionselection = require("../../data/questionselection.json")
 
+function fill(count){
+    var list = [];
+    for(var i = 0; i < count; i++) list.push(i);
 
-function test(){
-    var frequencies = [];
-    questions.questiontypes.forEach(type => {
-        frequencies.push(type.frequency);
-    });
+    return list;
+}
+
+function testRandomList(){
+    var lists = [];
+    var trials = 50;
+    var listSize = 10;
+    var count = 5;
+
+    for (var i = 0; i < trials; i++) {
+        lists.push(randomizer.getRandomizedList(fill(listSize), count));
+    }
+
+    for (var trial = 0; trial < trials; trial++){
+        var text = trial + 1 + "";
+        for (var i = 0; i < count; i++) {
+            text = text + "," + lists[trial][i];
+        }
+        console.log(text);
+    }
+}
+
+function testFrequencyFill(){
+
+    var frequencies = questionselection.questiontypes.map(
+        type => type.frequency
+    )
 
     var trials = 20;
     var count = 50;
     var lists = [];
     for (var i = 0; i < trials; i++){
-        var list = randomizer.getRandomizedList(frequencies, count);
+        var list = randomizer.getFrequencyFilledList(frequencies, count);
         lists[i] = list;
     }
     text = "number" ;
@@ -42,4 +67,5 @@ function* seqMaker(count) {
         yield index++;
 }
 
-test();
+//testFrequencyFill();
+testRandomList();

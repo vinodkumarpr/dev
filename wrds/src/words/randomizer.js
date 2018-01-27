@@ -1,6 +1,19 @@
 
+function getRandomizedList(list, requiredCount){
+    var indices = [];
+    for (var i = 0; i < list.length; i++) indices.push(i);
 
-function getRandomizedList(frequencies, count){
+    var randomList = [];
+    for(var i = 0; indices.length > 0 && i < requiredCount; i++){
+        var item = Math.floor(Math.random() * indices.length);
+        randomList.push(list[indices[item]]);
+        indices.splice(item, 1);
+    }
+
+    return randomList;
+}
+
+function getFrequencyFilledList(frequencies, count){
     var buckets = getItemBuckets(frequencies, count);
     var numItems = getBucketItemsCount(buckets);
 
@@ -74,4 +87,5 @@ function printListStat(list){
     }    
 }
 
+module.exports.getFrequencyFilledList = getFrequencyFilledList;
 module.exports.getRandomizedList = getRandomizedList;
