@@ -15,7 +15,8 @@ var optionsTextStyle = {
 var Question = React.createClass({
     getInitialState: function () {
         return {
-            selected: ""
+            selected: "",
+            elapsed: 0
         };
     },
     handleClick: function (option) {
@@ -23,8 +24,24 @@ var Question = React.createClass({
             selected: option
         });
     },
+    tick: function(){
+        if (this.state.elapsed == 30){
+            return;
+        }
+        this.setState({
+            elapsed: (this.state.elapsed + 1)
+        });        
+    },
+    componentDidMount: function () {
+        this.timer = setInterval(this.tick, 1000);
+    },
+    componentWillUnmount: function(){
+        clearInterval(this.timer);
+    },
     shouldComponentUpdate: function (nextProps, nextState) {
-        return (this.state.selected != nextState.selected);
+        var changed = (this.state.selected != nextState.selected);
+        changed = changed || (this.state.elapsed != nextState.elapsed);
+        return changed;
     },
     renderQuestion: function (question) {
         return <div style={questionTextStyle}>{this.props.question.question}</div>;
@@ -54,10 +71,15 @@ var Question = React.createClass({
         }
         var question = this.renderQuestion(this.props.question);
         var options = this.renderOptions(this.props.question.answer.options);
+        var time = "";
+        if (this.state.elapsed > 0){
+            time = this.state.elapsed + "/30";
+        }
         return (
             <div style={{ margin: '100px' }} >
                 {question}
                 <ul className="list-group list-group-flush" style={{ marginTop: '20px' }} >{options}</ul>
+                <span>{time}</span>
             </div>
         );
     }
