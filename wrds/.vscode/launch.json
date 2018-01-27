@@ -4,21 +4,21 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        // {
-        //     "name": "Launch main.html (disable sourcemaps)",
-        //     "type": "chrome",
-        //     "request": "launch",
-        //     "sourceMaps": false,
-        //     "file": "${workspaceFolder}/build/index.html",
-        //     "runtimeArgs": [
-        //         "--allow-file-access-from-files"
-        //     ]
-        // },
         {
-            "type": "node",
+            "name": "Launch main.html (disable sourcemaps)",
+            "type": "chrome",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/src/words/test.js"
-        }
+            "sourceMaps": false,
+            "file": "${workspaceFolder}/build/index.html",
+            "runtimeArgs": [
+                "--allow-file-access-from-files"
+            ]
+        }//,
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "program": "${workspaceFolder}/src/words/test.js"
+        // }
     ]
 }
