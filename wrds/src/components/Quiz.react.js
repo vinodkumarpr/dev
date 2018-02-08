@@ -22,7 +22,7 @@ var Quiz = React.createClass({
     },
     render: function () {
         return (
-            <Question question={this.state.currentQuestion} style={{ margin: '20px' }} />
+            <Question question={this.state.currentQuestion} />
         );
     }
 });
