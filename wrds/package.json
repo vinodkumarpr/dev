@@ -23,6 +23,8 @@
     "react": "^0.14.0-beta3",
     "react-dom": "^0.14.0-beta3",
     "react-list-select": "^0.3.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.5.2",    
     "update": "^0.7.4"
   },
   "repository": {}
