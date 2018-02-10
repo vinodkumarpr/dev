@@ -12,3 +12,16 @@ export const clearFilter = () => {
         type: CLEAR_FILTER
     }
 }
+
+export const displayQuiz = () => {
+    return {
+        type: DISPLAY_QUIZ
+    }
+}
+
+export const displayWord = word => {
+    return {
+        type: DISPLAY_WORD,
+        word: word
+    }
+}

@@ -16,3 +16,8 @@ export const QUESTION_TIMER_START = "question_timer_start";
 export const QUESTION_TIMER_STOP = "question_timer_stop";
 export const QUESTION_TIMER_CLEAR = "question_timer_clear";
 
+//
+// Display
+//
+export const DISPLAY_QUIZ = "display_quiz";
+export const DISPLAY_WORD = "display_word";

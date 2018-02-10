@@ -1,5 +1,32 @@
-/*
 var React = require('react');
+import DisplayWordList from '../containers/DisplayWordList'
+
+var Application = React.createClass({
+        render: function () {
+            var rightDisplay;
+            if (this.props.display == "quiz") {
+                //rightDisplay = <Quiz/>;
+                rightDisplay = <div/>;
+            } else {
+                //rightDisplay = <DisplayWord word={this.state.selectedWord} />;
+                rightDisplay = <div/>;
+            }
+            return (
+                <div className="container-fluid">
+                    <div className="row">
+                        <DisplayWordList/>
+                        <div className="col-md-7" style={{ backgroundColor: '#f0f0f0', margin: 10, height: 'calc(100vh - 20px)' }}>
+                            {rightDisplay}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    });
+
+    module.exports = Application;
+
+/*
 var Word = require("../words/word.js")
 var words = require("../words/words.js")
 var FilterEdit = require('./FilterEdit.react');
