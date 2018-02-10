@@ -7,13 +7,15 @@ const quiz = (state = {}, action) => {
             return Object.assign({}, state, {
                 questions : action.questions,
                 index: 0,
-                totalQuestions : action.totalQuestions,
+                totalQuestions : action.questions.length,
                 elaspedtime : 0,
                 quizstate: "started",
             });
         case QUIZ_START_QUESTION:
+        console.log("quiz " + QUIZ_START_QUESTION);
             return Object.assign({}, state, {
                 index: action.index,
+                elaspedtime : 0,
                 questionstate: "started"
             });
         case QUIZ_TIMER_TICK:

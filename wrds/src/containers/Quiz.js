@@ -5,7 +5,8 @@ import QuizComponent from '../components/Quiz.react'
 const MapStateToProps = state => {
     console.log("Quiz :: MapStateToProps " + state)
     return {
-        question : state.quiz.questions ? state.quiz.questions[state.quiz.index] : null
+        question : state.quiz.questions ? state.quiz.questions[state.quiz.index] : null,
+        elaspedtime : state.quiz.elaspedtime
     }
 }
 

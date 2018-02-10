@@ -1,7 +1,7 @@
 import {FILTER_WORDS, CLEAR_FILTER, DISPLAY_WORD,
          DISPLAY_QUIZ, START_TIMER, QUIZ_LOAD, QUIZ_START,
          QUIZ_FINISH, QUIZ_START_QUESTION, QUIZ_ANSWERED_QUESTION, 
-         QUIZ_COMPLETE_QUESTION} from '../constants/actiontypes'
+         QUIZ_COMPLETE_QUESTION, QUIZ_TIMER_START, QUIZ_TIMER_STOP} from '../constants/actiontypes'
 
 export const filterWords = filter => {
     return {
@@ -69,4 +69,19 @@ export const finishQuiz  = () => {
         type: QUIZ_FINISH,
         questions: questions
     }    
+}
+
+export const startQuizTimer = (token, duration) => {
+    return {
+        type: QUIZ_TIMER_START,
+        token: token,
+        duration: duration
+    } 
+}
+
+export const stopQuizTimer = (token) => {
+    return {
+        type: QUIZ_TIMER_STOP,
+        token: token,
+    } 
 }

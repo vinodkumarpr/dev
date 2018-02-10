@@ -9,7 +9,7 @@ var Quiz = React.createClass({
     },
     render: function () {
         return (
-            <Question question={this.props.question} />
+            <Question question={this.props.question} elaspedtime={this.props.elaspedtime}/>
         );
     }
 });

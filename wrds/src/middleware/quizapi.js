@@ -3,12 +3,31 @@ import { DISPLAY_WORD, DISPLAY_QUIZ } from '../constants/actiontypes'
 var Questions = require("../words/questions.js")
 var randomizer = require("../words/randomizer.js")
 
-// import { QUIZ_LOAD, QUIZ_START,
-//     QUIZ_FINISH, QUIZ_START_QUESTION, QUIZ_ANSWERED_QUESTION, 
-//     QUIZ_COMPLETE_QUESTION} from '../constants/actiontypes'
-import { QUIZ_LOAD } from '../constants/actiontypes'
-import {loadQuiz, startQuiz, startQuestion, completeQuestion, finishQuiz} from '../actions'
+import { QUIZ_LOAD, QUIZ_START_QUESTION, QUIZ_ANSWERED_QUESTION, QUIZ_TIMER_ELAPSED } from '../constants/actiontypes'
+import {loadQuiz, startQuiz, startQuestion, completeQuestion, finishQuiz, startQuizTimer} from '../actions'
 
+let startQuestionTimeoutId;
+
+function startQuestionAsync(dispatch, index){
+    startQuestionTimeoutId = setTimeout( (dispatch, index) => {
+        dispatch(startQuestion(index));
+        clearTimeout(startQuestionTimeoutId);
+    }, 0, dispatch, index);
+}
+
+let nextQuestionTimeoutId;
+
+function nextQuestionAsync(store){
+    var state = store.getState();
+    if (store.getState().quiz.index < store.getState().quiz.totalQuestions - 1 ) {
+        nextQuestionTimeoutId = setTimeout( (dispatch, index) => {
+            dispatch(startQuestion(index));
+            clearTimeout(nextQuestionTimeoutId);
+        }, 0, store.dispatch, store.getState().quiz.index + 1);    
+    } else {
+
+    }
+}
 
 const quizapi = store => next => action => {
     switch (action.type) {
@@ -16,11 +35,18 @@ const quizapi = store => next => action => {
             var words = store.getState().words;
             var questions = loadQuestion(words, action.totalQuestions);
             store.dispatch (startQuiz(questions));
+            startQuestionAsync(store.dispatch, 0);
             break;
-        //case QUIZ_TIMER_ELAPSED:
-          //  break;
-        //case QUIZ_ANSWERED_QUESTION:
-          //  break;
+        case QUIZ_START_QUESTION:
+            store.dispatch(startQuizTimer("quiz-timer", 5));
+            break;
+        case QUIZ_TIMER_ELAPSED:
+            nextQuestionAsync(store);
+            break;
+        case QUIZ_ANSWERED_QUESTION:
+            store.dispatch(stopQuizTimer("quiz-timer"));        
+            nextQuestionAsync(store);
+            break;
         }
     next(action);
 };
