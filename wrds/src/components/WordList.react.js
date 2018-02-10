@@ -29,7 +29,7 @@ var WordList = React.createClass({
                     <li className="list-group-item active" style={itemTextStyle} key={word.word()} onClick={this.handleClick.bind(this, word.word())}>{word.word()}</li>
                 );
             }
-            return (<li className="list-group-item" style={itemTextStyle} key={word.word()} onClick={this.handleClick.bind(this, word.word())}>{word.word()}</li>
+            return (<li className="list-group-item" style={itemTextStyle} key={word.word()} onClick={this.handleClick.bind(this, word)}>{word.word()}</li>
             );
         });
 

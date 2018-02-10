@@ -1,4 +1,4 @@
-import {FILTER_WORDS, CLEAR_FILTER} from '../constants/actiontypes'
+import {FILTER_WORDS, CLEAR_FILTER, DISPLAY_WORD, DISPLAY_QUIZ} from '../constants/actiontypes'
 
 export const filterWords = filter => {
     return {

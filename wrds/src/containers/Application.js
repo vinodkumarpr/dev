@@ -3,7 +3,7 @@ import {displayQuiz, displayWord} from '../actions'
 import ApplicationComponent from '../components/Application.react'
 
 const MapStateToProps = state => {
-    console.log("MapStateToProps " + state)
+    console.log("Application:: MapStateToProps " + state)
     return {
         display : state.display
     }

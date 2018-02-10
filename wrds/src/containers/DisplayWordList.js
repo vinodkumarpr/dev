@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {filterWords, clearFilter} from '../actions'
+import {filterWords, clearFilter, displayWord} from '../actions'
 import DisplayWordListComponent from '../components/DisplayWordList.react'
 
 const getWordsList = (words, filter) => {
@@ -24,6 +24,9 @@ const MapDispatchToProps = dispatch => {
         },
         onClearFilter: () => {
             dispatch(clearFilter())
+        },
+        onWordSelected: (word) =>{
+            dispatch(displayWord(word))
         }
     }
 }
