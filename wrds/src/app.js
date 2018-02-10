@@ -1,6 +1,17 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Application = require('./components/Application.react');
-var words = require("./words/words")
+import React from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import {render} from 'react-dom'
+import {Provider} from "react-redux"
+import wordsApp from './reducers'
+import quizapi from './middleware/quizapi'
+import quiztimerapi from './middleware/quiztimerapi'
+import Application from './containers/Application'
 
-ReactDOM.render(<Application/>, document.getElementById('react-application'));
+let store = createStore(wordsApp, applyMiddleware(quizapi, quiztimerapi))
+
+render(
+    <Provider store={store}>
+    <Application/>
+    </Provider>
+    , document.getElementById('react-application')
+)
