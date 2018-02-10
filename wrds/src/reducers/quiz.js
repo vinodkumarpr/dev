@@ -6,9 +6,10 @@ const quiz = (state = {}, action) => {
         case QUIZ_START:
             return Object.assign({}, state, {
                 questions : action.questions,
-                index: 0,
+                index: -1,
                 totalQuestions : action.questions.length,
                 elaspedtime : 0,
+                duration: action.duration,
                 quizstate: "started",
             });
         case QUIZ_START_QUESTION:

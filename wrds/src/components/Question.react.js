@@ -19,7 +19,6 @@ var Question = React.createClass({
         return <div style={questionTextStyle}>{this.props.question.question}</div>;
     },
     renderOptions: function (options) {
-        console.log("options length " + options.length);
         var items = options.map((option) => {
 
             if (this.props.selected && option == this.props.selected){
@@ -48,7 +47,7 @@ var Question = React.createClass({
             <div style={{ margin: '100px' }} >
                 {question}
                 <ul className="list-group list-group-flush" style={{ marginTop: '20px' }} >{options}</ul>
-                <span>{this.props.elaspedtime}</span>
+                <span>{this.props.remainingtime}</span>
             </div>
         );
     }

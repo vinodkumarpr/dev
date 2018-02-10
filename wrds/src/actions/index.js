@@ -36,17 +36,19 @@ export const loadQuiz  = (totalQuestions) => {
     }    
 }
 
-export const startQuiz  = (questions) => {
+export const startQuiz  = (questions, duration) => {
     return {
-        type: QUIZ_START,
-        questions: questions
+        type : QUIZ_START,
+        questions : questions,
+        duration : duration
     }    
 }
 
-export const startQuestion  = (index) => {
+export const startQuestion  = (index, duration) => {
     return {
         type: QUIZ_START_QUESTION,
-        index: index
+        index: index,
+        duration: duration
     }    
 }
 

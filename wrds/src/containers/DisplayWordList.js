@@ -3,7 +3,7 @@ import {filterWords, clearFilter, displayWord, displayQuiz} from '../actions'
 import DisplayWordListComponent from '../components/DisplayWordList.react'
 
 const getWordsList = (words, filter) => {
-    console.log("getWordsList filter " + filter);
+
     if (filter){
         return words.filter( word => word.word().startsWith(filter));
     }

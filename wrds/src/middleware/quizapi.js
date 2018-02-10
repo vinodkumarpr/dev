@@ -19,11 +19,11 @@ let nextQuestionTimeoutId;
 
 function nextQuestionAsync(store){
     var state = store.getState();
-    if (store.getState().quiz.index < store.getState().quiz.totalQuestions - 1 ) {
-        nextQuestionTimeoutId = setTimeout( (dispatch, index) => {
-            dispatch(startQuestion(index));
+    if (state.quiz.index < state.quiz.totalQuestions - 1 ) {
+        nextQuestionTimeoutId = setTimeout( (dispatch, index, duration) => {
+            dispatch(startQuestion(index, duration));
             clearTimeout(nextQuestionTimeoutId);
-        }, 0, store.dispatch, store.getState().quiz.index + 1);    
+        }, 0, store.dispatch, state.quiz.index + 1, state.quiz.duration);
     } else {
 
     }
@@ -34,11 +34,11 @@ const quizapi = store => next => action => {
         case QUIZ_LOAD:
             var words = store.getState().words;
             var questions = loadQuestion(words, action.totalQuestions);
-            store.dispatch (startQuiz(questions));
-            startQuestionAsync(store.dispatch, 0);
+            store.dispatch (startQuiz(questions, 5));
+            nextQuestionAsync(store);
             break;
         case QUIZ_START_QUESTION:
-            store.dispatch(startQuizTimer("quiz-timer", 5));
+            store.dispatch(startQuizTimer("quiz-timer", action.duration));
             break;
         case QUIZ_TIMER_ELAPSED:
             nextQuestionAsync(store);
