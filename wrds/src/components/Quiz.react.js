@@ -1,3 +1,4 @@
+/*
 var React = require('react');
 var Question = require('./Question.react');
 var Questions = require("../words/questions.js")
@@ -28,3 +29,4 @@ var Quiz = React.createClass({
 });
 
 module.exports = Quiz;
+*/

@@ -1,3 +1,4 @@
+/*
 var React = require('react');
 var Word = require("../words/word.js")
 var words = require("../words/words.js")
@@ -86,3 +87,4 @@ var Application = React.createClass({
 });
 
 module.exports = Application;
+*/

@@ -6,7 +6,7 @@ var itemTextStyle = {
 
 var FilterEdit = React.createClass({
     handleOnChange: function (event) {
-        this.props.onApplyFilter(event.target.value);
+        this.props.onFilterWords(event.target.value);
     },
     handleOnQuizBtnClicked: function() {
         this.props.onQuizLaunch();

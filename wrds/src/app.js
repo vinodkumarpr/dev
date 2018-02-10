@@ -1,6 +1,15 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Application = require('./components/Application.react');
-var words = require("./words/words")
+import React from 'react'
+import { createStore } from 'redux';
+import {render} from 'react-dom';
+import {Provider} from "react-redux";
+import wordsApp from './reducers';
+import DisplayWordList from './containers/DisplayWordList'
 
-ReactDOM.render(<Application/>, document.getElementById('react-application'));
+let store = createStore(wordsApp)
+
+render(
+    <Provider store={store}>
+    <DisplayWordList/>
+    </Provider>
+    , document.getElementById('react-application')
+)
