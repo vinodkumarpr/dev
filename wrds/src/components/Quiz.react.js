@@ -1,9 +1,7 @@
-/*
 var React = require('react');
 var Question = require('./Question.react');
 var Questions = require("../words/questions.js")
 var randomizer = require("../words/randomizer.js")
-var words = require("../words/words.js")
 
 var Quiz = React.createClass({
     componentWillMount: function () {
@@ -14,9 +12,9 @@ var Quiz = React.createClass({
         });
     },
     loadQuestion: function(){
-        var wordlist = words.getWordList();
+        var wordlist = this.props.words;
         var numQuestions = wordlist.length < 50 ?  wordlist.length : 50;
-        var list = randomizer.getRandomizedList(words.getWordList(), numQuestions);
+        var list = randomizer.getRandomizedList(wordlist, numQuestions);
         var questions = Questions.getQuestions(list, numQuestions);
         
         return questions;
@@ -29,4 +27,3 @@ var Quiz = React.createClass({
 });
 
 module.exports = Quiz;
-*/

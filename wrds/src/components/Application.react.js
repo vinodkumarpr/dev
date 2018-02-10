@@ -1,5 +1,6 @@
 var React = require('react');
 var DisplayWord = require('./DisplayWord.react');
+var Quiz = require('./Quiz.react');
 import DisplayWordList from '../containers/DisplayWordList'
 
 var Application = React.createClass({
@@ -9,7 +10,7 @@ var Application = React.createClass({
         }
         switch (this.props.display.type) {
             case "quiz":
-                return <div />;
+                return <Quiz words={this.props.words}/>;
             case "word":
                 return <DisplayWord word={this.props.display.word} />;
         }
