@@ -11,7 +11,7 @@ const getWordsList = (words, filter) => {
 }
 
 const MapStateToProps = state => {
-    console.log("MapStateToProps " + state)
+//    console.log("MapStateToProps " + state)
     return {
         words : getWordsList(state.words, state.filter)
     }

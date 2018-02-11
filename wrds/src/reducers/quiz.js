@@ -1,5 +1,5 @@
 import { QUIZ_START, QUIZ_START_QUESTION, QUIZ_TIMER_TICK, 
-    QUIZ_COMPLETE_QUESTION, QUIZ_FINISH } from '../constants/actiontypes'
+    QUIZ_ANSWERED_QUESTION, QUIZ_COMPLETE_QUESTION, QUIZ_FINISH } from '../constants/actiontypes'
 
 const quiz = (state = {}, action) => {
     switch (action.type) {
@@ -11,9 +11,9 @@ const quiz = (state = {}, action) => {
                 elaspedtime : 0,
                 duration: action.duration,
                 quizstate: "started",
+                answers : []
             });
         case QUIZ_START_QUESTION:
-        console.log("quiz " + QUIZ_START_QUESTION);
             return Object.assign({}, state, {
                 index: action.index,
                 elaspedtime : 0,
@@ -22,6 +22,11 @@ const quiz = (state = {}, action) => {
         case QUIZ_TIMER_TICK:
             return Object.assign({}, state, {
                 elaspedtime: action.elaspedtime
+            });
+        case QUIZ_ANSWERED_QUESTION:
+        console.log("quiz " + 'QUIZ_ANSWERED_QUESTION');
+            return Object.assign({}, state, {
+                answers : state.answers ? [...state.answers, action.answer] : [action.answer],
             });
         case QUIZ_COMPLETE_QUESTION:
             return Object.assign({}, state, {

@@ -170,7 +170,7 @@ function makeAnswerOptions(answertype, correctOptions, incorrectOptions) {
 
     var answerOptions = {
         "options": options,
-        "answer": answer
+        "correctanswer": answer
     };
 
     return answerOptions;

@@ -4,7 +4,7 @@ var Questions = require("../words/questions.js")
 var randomizer = require("../words/randomizer.js")
 
 import { QUIZ_LOAD, QUIZ_START_QUESTION, QUIZ_ANSWERED_QUESTION, QUIZ_TIMER_ELAPSED } from '../constants/actiontypes'
-import {loadQuiz, startQuiz, startQuestion, completeQuestion, finishQuiz, startQuizTimer} from '../actions'
+import {loadQuiz, startQuiz, startQuestion, completeQuestion, finishQuiz, startQuizTimer, stopQuizTimer} from '../actions'
 
 let startQuestionTimeoutId;
 
@@ -17,13 +17,13 @@ function startQuestionAsync(dispatch, index){
 
 let nextQuestionTimeoutId;
 
-function nextQuestionAsync(store){
+function nextQuestionAsync(store, delay){
     var state = store.getState();
     if (state.quiz.index < state.quiz.totalQuestions - 1 ) {
         nextQuestionTimeoutId = setTimeout( (dispatch, index, duration) => {
             dispatch(startQuestion(index, duration));
             clearTimeout(nextQuestionTimeoutId);
-        }, 0, store.dispatch, state.quiz.index + 1, state.quiz.duration);
+        }, delay, store.dispatch, state.quiz.index + 1, state.quiz.duration);
     } else {
 
     }
@@ -34,8 +34,8 @@ const quizapi = store => next => action => {
         case QUIZ_LOAD:
             var words = store.getState().words;
             var questions = loadQuestion(words, action.totalQuestions);
-            store.dispatch (startQuiz(questions, 5));
-            nextQuestionAsync(store);
+            store.dispatch (startQuiz(questions, 15));
+            nextQuestionAsync(store, 0);
             break;
         case QUIZ_START_QUESTION:
             store.dispatch(startQuizTimer("quiz-timer", action.duration));
@@ -45,7 +45,7 @@ const quizapi = store => next => action => {
             break;
         case QUIZ_ANSWERED_QUESTION:
             store.dispatch(stopQuizTimer("quiz-timer"));        
-            nextQuestionAsync(store);
+            //nextQuestionAsync(store, 2000);
             break;
         }
     next(action);
