@@ -1,5 +1,5 @@
 var React = require('react');
-import { NormalAnswerOption, PassedAnswerOption, FailedAnswerOption, CorrectAnswerOption } from './AnswerOption'
+import { NormalAnswerOption, PassedAnswerOption, FailedAnswerOption, CorrectAnswerOption, AnsweredAnswerOption } from './AnswerOption'
 
 var questionTextStyle = {
     "fontFamily": "Times New Roman, sans-serif",
@@ -12,25 +12,25 @@ var Question = React.createClass({
         this.props.onAnswerQuestion(option);
     },
     hanldleAnsweredClick: function () {
-        window.alert("test")
+        window.alert("Already answered!!!")
     },
     renderQuestion: function (question) {
         return <div style={questionTextStyle}>{this.props.question.question}</div>;
     },
     renderAnsweredOptions: function (options) {
         var items = options.map((option) => {
-                if (option === this.props.answer) {
-                    if (this.props.correctanswer === this.props.answer) {
-                        return (<PassedAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
-                    } else {
-                        return (<FailedAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
-                    }
-                } else if (option === this.props.correctanswer) {
-                    return (<CorrectAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
+            if (option === this.props.answer) {
+                if (this.props.correctanswer === this.props.answer) {
+                    return (<PassedAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
                 } else {
-                    return (<NormalAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
+                    return (<FailedAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
                 }
-            });
+            } else if (option === this.props.correctanswer) {
+                return (<CorrectAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
+            } else {
+                return (<AnsweredAnswerOption option={option} onClick={this.hanldleAnsweredClick.bind(this, option)} />);
+            }
+        });
         return items;
     },
     renderOptions: function (options) {
@@ -47,8 +47,7 @@ var Question = React.createClass({
         var options;
         if (this.props.answer) {
             options = this.renderAnsweredOptions(this.props.question.answer.options);
-        } else 
-        {
+        } else {
             options = this.renderOptions(this.props.question.answer.options);
         }
 
