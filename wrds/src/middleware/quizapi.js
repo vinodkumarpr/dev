@@ -17,8 +17,10 @@ function startQuestionAsync(dispatch, index){
 
 let nextQuestionTimeoutId;
 
+
 function nextQuestionAsync(store, delay){
     var state = store.getState();
+
     if (state.quiz.index < state.quiz.totalQuestions - 1 ) {
         nextQuestionTimeoutId = setTimeout( (dispatch, index, duration) => {
             dispatch(startQuestion(index, duration));
@@ -45,7 +47,7 @@ const quizapi = store => next => action => {
             break;
         case QUIZ_ANSWERED_QUESTION:
             store.dispatch(stopQuizTimer("quiz-timer"));        
-            //nextQuestionAsync(store, 2000);
+            nextQuestionAsync(store, 2000);
             break;
         }
     next(action);

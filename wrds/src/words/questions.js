@@ -32,7 +32,7 @@ function getQuestions(wordlist, numQuestions) {
         }
 
         if (isValidQuestion(question)) {
-            printQuestion(question);
+            //printQuestion(question);
             questions.push(question);
         }
     }

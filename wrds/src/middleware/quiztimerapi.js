@@ -12,14 +12,15 @@ const quiztimerapi = store => next => action => {
                 elapsed: 0,
                 duration: action.duration ? action.duration : 30
             }
-            timer.interval = setInterval((timer) => store.dispatch({ type: QUIZ_TIMER_TICK, timer: timer, elaspedtime : timer.elapsed }), 1000, timer);
+            timer.interval = setInterval((timer) => {
+                timer.elapsed++;
+                store.dispatch({ type: QUIZ_TIMER_TICK, timer: timer, elaspedtime : timer.elapsed });
+            }, 1000, timer);
             timers.push(timer);
             break;
         case QUIZ_TIMER_TICK:
             if (action.timer.elapsed == action.timer.duration) {
                 store.dispatch({ type: QUIZ_TIMER_ELAPSED, timer: action.timer });
-            } else {
-                action.timer.elapsed++;
             }
             break;
         case QUIZ_TIMER_ELAPSED:
