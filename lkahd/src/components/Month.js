@@ -26,6 +26,29 @@ var Month = React.createClass({
         }
         return null;
     },
+    cell : function (date) {
+        var td = null;
+        if (date.active) {
+            var status = this.playlistStatus(date.dateString);
+            if (status) {
+                if (status.errors) {
+                    td = (<td style={{'background-color': "#FF0000"}}> <b><i> {date.date}</i> </b> </td>);
+                } else if (status.warnings) {
+                    td = (<td style={{'background-color': "#FFFF00"}}> <b><i> {date.date}</i> </b> </td>);
+                } else {
+                    td = (<td style={{'background-color': "#00FF00"}}> <b><i> {date.date}</i> </b> </td>);
+                }
+            } else {
+                td = (<td style={{'background-color': "#FF00FF"}}> <b><i> {date.date}</i> </b> </td>);
+            }
+        }
+        else if (date.currentMonth) {
+            td = (<td> <b> {date.date} </b> </td>);
+        } else {
+            td = (<td> {date.date} </td>);
+        }
+        return td;
+    },
     rows: function () {
         var firstDay = new moment(this.props.startDate);
         var firstDay = firstDay.startOf('month');
@@ -41,26 +64,8 @@ var Month = React.createClass({
                 trs.push(<tr>{tds}</tr>);
                 tds = [];
             }
-            
-            if (dates[i].active) {
-                var status = this.playlistStatus(dates[i].dateString);
-                if (status) {
-                    if (status.errors) {
-                        tds.push(<td style={{'background-color': "#FF0000"}}> <b><i> {dates[i].date}</i> </b> </td>);
-                    } else if (status.warnings) {
-                        tds.push(<td style={{'background-color': "#FFFF00"}}> <b><i> {dates[i].date}</i> </b> </td>);
-                    } else {
-                        tds.push(<td style={{'background-color': "#00FF00"}}> <b><i> {dates[i].date}</i> </b> </td>);
-                    }
-                } else {
-                    tds.push(<td style={{'background-color': "#FF00FF"}}> <b><i> {dates[i].date}</i> </b> </td>);
-                }
-            }
-            else if (dates[i].currentMonth) {
-                tds.push(<td> <b> {dates[i].date} </b> </td>);
-            } else {
-                tds.push(<td> {dates[i].date} </td>);
-            }
+            var td = this.cell(dates[i]);
+            tds.push(td);
         }
         trs.push(<tr>{tds}</tr>);
         return trs;
