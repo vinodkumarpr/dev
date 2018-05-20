@@ -1,10 +1,5 @@
 var request = require("request");
-
-var config = {
-    host : "turner-nordic.amagi.tv",
-    feed_id : [1,2,3,4,5,6],
-    auth_token : "AUTH_TOKEN"
-};
+var config = require("../config");
 
 //https://turner-nordic.amagi.tv/v1/api/playlist/status.json?feed_id=1&start_date=2018-05-27&end_date=2018-05-31&ptype=normal&auth_token=AUTH_TOKEN
 
