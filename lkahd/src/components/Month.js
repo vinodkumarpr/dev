@@ -1,7 +1,15 @@
 var React = require('react');
 var moment = require('moment');
+import Playlist from '../containers/Playlist';
 
 var Month = React.createClass({
+    onClick: function (e, date) {
+        console.log("onClick " + date);
+        this.props.onClick(date);
+    },
+    onPlaylistClose: function () {
+        this.props.onClosePlaylist();
+    },
     range: function (startDay) {
         var dates = [];
         var date = new moment(startDay).startOf('day');
@@ -12,9 +20,9 @@ var Month = React.createClass({
             var active = (date >= startDate && date <= endDate);
             dates.push({
                 date: date.date(),
-                dateString : date.format('YYYY-MM-DD'),
+                dateString: date.format('YYYY-MM-DD'),
                 currentMonth: this.props.startDate.month() == date.month(),
-                active : active
+                active: active
             })
             date = date.add(1, 'day');
         }
@@ -26,26 +34,50 @@ var Month = React.createClass({
         }
         return null;
     },
-    cell : function (date) {
+    playlistPopup: function () {
+        if (this.props.selectedDate && this.props.showPlaylistPopup) {
+            return (<Playlist onClose={this.onPlaylistClose} show={true} date={this.props.selectedDate}>
+            </Playlist>);
+        }
+        return null;
+    },
+    cell: function (date) {
         var td = null;
         if (date.active) {
             var status = this.playlistStatus(date.dateString);
             if (status) {
                 if (status.errors) {
-                    td = (<td style={{'background-color': "#FF0000"}}> <b><i> {date.date}</i> </b> </td>);
+                    td = (<td style={{ 'background-color': "#FF0000" }}>
+                        <div onClick={(e) => this.onClick(e, date)}>
+                            <b> {date.date} </b>
+                        </div>
+                    </td>);
                 } else if (status.warnings) {
-                    td = (<td style={{'background-color': "#FFFF00"}}> <b><i> {date.date}</i> </b> </td>);
+                    td = (<td style={{ 'background-color': "#FFFF00" }}>
+                        <div onClick={(e) => this.onClick(e, date)}>
+                            <b> {date.date} </b>
+                        </div>
+                    </td>);
                 } else {
-                    td = (<td style={{'background-color': "#00FF00"}}> <b><i> {date.date}</i> </b> </td>);
+                    td = (<td style={{ 'background-color': "#00FF00" }}>
+                        <div onClick={(e) => this.onClick(e, date)}>
+                            <b> {date.date} </b>
+                        </div>
+                    </td>);
                 }
             } else {
-                td = (<td style={{'background-color': "#FF00FF"}}> <b><i> {date.date}</i> </b> </td>);
+                td = (<td style={{ 'background-color': "#FF00FF" }}>
+                    <div>
+                        <b> {date.date} </b>
+                    </div>
+                </td>);
             }
         }
         else if (date.currentMonth) {
             td = (<td> <b> {date.date} </b> </td>);
         } else {
             td = (<td> {date.date} </td>);
+            //td = (<td><img src="smiley.gif" alt="Smiley face" width="10" height="10"/>{date.date}</td>);
         }
         return td;
     },
@@ -71,6 +103,7 @@ var Month = React.createClass({
         return trs;
     },
     render: function () {
+        var playlist = this.playlistPopup();
         return (
             <div className="container-fluid">
                 <div className="row"  >
@@ -78,7 +111,7 @@ var Month = React.createClass({
                         <table className="table" style={{ textAlign: "center" }}>
                             <thead>
                                 <tr>
-                                <th colSpan="5">{this.props.startDate.format('MMM YYYY')}</th>
+                                    <th colSpan="5">{this.props.startDate.format('MMM YYYY')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,6 +119,9 @@ var Month = React.createClass({
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div>
+                    {playlist}
                 </div>
             </div>
         );

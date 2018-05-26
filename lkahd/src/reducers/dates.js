@@ -11,6 +11,7 @@ const dates = (state = { startDate: moment(), endDate: moment() }, action) => {
             return Object.assign({}, state, {
                 endDate: action.endDate
             });
+
         default:
             return state;
     }
