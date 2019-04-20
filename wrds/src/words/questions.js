@@ -32,7 +32,7 @@ function getQuestions(wordlist, numQuestions) {
         }
 
         if (isValidQuestion(question)) {
-            printQuestion(question);
+            //printQuestion(question);
             questions.push(question);
         }
     }
@@ -170,7 +170,7 @@ function makeAnswerOptions(answertype, correctOptions, incorrectOptions) {
 
     var answerOptions = {
         "options": options,
-        "answer": answer
+        "correctanswer": answer
     };
 
     return answerOptions;

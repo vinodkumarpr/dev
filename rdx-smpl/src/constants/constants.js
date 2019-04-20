@@ -1,0 +1,6 @@
+
+export const Selections = {
+    SELECT_ALL: 'ALL',
+    SELECT_COMPLETED: 'SELECT_COMPLETED',
+    SELECT_ACTIVE: 'SELECT_ACTIVE'
+  }
