@@ -1,0 +1,170 @@
+Issue,Source,Component,Action,Actor
+Application Not Active,Advance Monitor,Adpd,Please restart Adpd application,Amagi Support
+Application Not Active,Advance Monitor,Device agent,Please restart Device agent application,Amagi Support
+Application Not Active,Advance Monitor,Player,Please restart Player application,Amagi Support
+Application Not Active,Advance Monitor,Playlist manager,Please restart Playlist manager application,Amagi Support
+Application Not Active,Advance Monitor,DTMF,Please restart DTMF application,Amagi Support
+Application Not Active,Realtime Monitor,Adpd,Please restart Adpd application,Amagi Support
+Application Not Active,Realtime Monitor,Device agent,Please restart Device agent application,Amagi Support
+Application Not Active,Realtime Monitor,Player,Please restart Player application,Amagi Support
+Application Not Active,Realtime Monitor,Playlist manager,Please restart Playlist manager application,Amagi Support
+Application Not Active,Realtime Monitor,DTMF,Please restart DTMF application,Amagi Support
+Application Not Active,Field,Adpd,Please restart Adpd application and update Customer as necessary,Amagi Support
+Application Not Active,Field,Device agent,Please restart Device agent application and update Customer as necessary,Amagi Support
+Application Not Active,Field,Player,Please restart Player application and update Customer as necessary,Amagi Support
+Application Not Active,Field,Playlist manager,Please restart Playlist manager application and update Customer as necessary,Amagi Support
+Application Not Active,Field,DTMF,Please restart DTMF application and update Customer as necessary,Amagi Support
+Quality Check,Blip,Media,Delivered Media has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Rescue,Delivered Rescue has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Graphics,Delivered Graphics has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Audio,Delivered Audio has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Subtitle,Delivered Subtitle has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Dynamic Graphic,Delivered Dynamic Graphic has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Ticker,Delivered Ticker has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Promo,Delivered Promo has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Program,Delivered Program has failed QC. Please redeliver asset,Media Ingest
+Quality Check,Blip,Media,Delivered Media has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Rescue,Delivered Rescue has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Graphics,Delivered Graphics has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Audio,Delivered Audio has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Subtitle,Delivered Subtitle has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Dynamic Graphic,Delivered Dynamic Graphic has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Ticker,Delivered Ticker has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Promo,Delivered Promo has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Program,Delivered Program has failed QC. Please approve QC bypass,Media Ingest
+Quality Check,Blip,Commercial,Delivered Commercial has failed QC. Please redeliver asset,Commercial Ingest
+Quality Check,Blip,Commercial,Delivered Commercial has failed QC. Please approve QC bypass,Commercial Ingest
+Asset Stuck in Ingest,Blip,Media,Delivered Media is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Rescue,Delivered Rescue is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Graphics,Delivered Graphics is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Audio,Delivered Audio is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Subtitle,Delivered Subtitle is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Commercial,Delivered Commercial is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Dynamic Graphic,Delivered Dynamic Graphic is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Ticker,Delivered Ticker is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Promo,Delivered Promo is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Stuck in Ingest,Blip,Program,Delivered Program is stuck in ingest for a long time. Please analyze and resolve. Update Customer as necessary,Amagi Support
+Asset Transcode Failed,Blip,Media,Delivered Media has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Rescue,Delivered Rescue has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Graphics,Delivered Graphics has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Audio,Delivered Audio has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Subtitle,Delivered Subtitle has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Commercial,Delivered Commercial has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Dynamic Graphic,Delivered Dynamic Graphic has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Ticker,Delivered Ticker has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Promo,Delivered Promo has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Transcode Failed,Blip,Program,Delivered Program has failed to transcode. Please analyze and update Customer,Amagi Support
+Asset Not Processed,Blip,Media,Please reprocess Media asset and update,Media Ingest
+Asset Not Processed,Blip,Rescue,Please reprocess Rescue asset and update,Media Ingest
+Asset Not Processed,Blip,Graphics,Please reprocess Graphics asset and update,Media Ingest
+Asset Not Processed,Blip,Audio,Please reprocess Audio asset and update,Media Ingest
+Asset Not Processed,Blip,Subtitle,Please reprocess Subtitle asset and update,Media Ingest
+Asset Not Processed,Blip,Commercial,Please reprocess Commercial asset and update,Media Ingest
+Asset Not Processed,Blip,Dynamic Graphic,Please reprocess Dynamic Graphic asset and update,Media Ingest
+Asset Not Processed,Blip,Ticker,Please reprocess Ticker asset and update,Media Ingest
+Asset Not Processed,Blip,Promo,Please reprocess Promo asset and update,Media Ingest
+Asset Not Processed,Blip,Program,Please reprocess Program asset and update,Media Ingest
+Asset Not Downloaded,Advance Monitor,Media,Please analyze and retrigger Media asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Rescue,Please analyze and retrigger Rescue asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Graphics,Please analyze and retrigger Graphics asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Audio,Please analyze and retrigger Audio asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Subtitle,Please analyze and retrigger Subtitle asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Commercial,Please analyze and retrigger Commercial asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Dynamic Graphic,Please analyze and retrigger Dynamic Graphic asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Ticker,Please analyze and retrigger Ticker asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Promo,Please analyze and retrigger Promo asset download,Media Ingest
+Asset Not Downloaded,Advance Monitor,Program,Please analyze and retrigger Program asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Media,Please analyze and retrigger Media asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Rescue,Please analyze and retrigger Rescue asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Graphics,Please analyze and retrigger Graphics asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Audio,Please analyze and retrigger Audio asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Subtitle,Please analyze and retrigger Subtitle asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Commercial,Please analyze and retrigger Commercial asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Dynamic Graphic,Please analyze and retrigger Dynamic Graphic asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Ticker,Please analyze and retrigger Ticker asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Promo,Please analyze and retrigger Promo asset download,Media Ingest
+Asset Not Downloaded,Realtime Monitor,Program,Please analyze and retrigger Program asset download,Media Ingest
+Asset Not Downloaded,Field,Media,Please analyze and retrigger Media asset download,Media Ingest
+Asset Not Downloaded,Field,Rescue,Please analyze and retrigger Rescue asset download,Media Ingest
+Asset Not Downloaded,Field,Graphics,Please analyze and retrigger Graphics asset download,Media Ingest
+Asset Not Downloaded,Field,Audio,Please analyze and retrigger Audio asset download,Media Ingest
+Asset Not Downloaded,Field,Subtitle,Please analyze and retrigger Subtitle asset download,Media Ingest
+Asset Not Downloaded,Field,Commercial,Please analyze and retrigger Commercial asset download,Media Ingest
+Asset Not Downloaded,Field,Dynamic Graphic,Please analyze and retrigger Dynamic Graphic asset download,Media Ingest
+Asset Not Downloaded,Field,Ticker,Please analyze and retrigger Ticker asset download,Media Ingest
+Asset Not Downloaded,Field,Promo,Please analyze and retrigger Promo asset download,Media Ingest
+Asset Not Downloaded,Field,Program,Please analyze and retrigger Program asset download,Media Ingest
+Missing Asset,Blip,Media,Media asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Rescue,Rescue asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Graphics,Graphics asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Audio,Audio asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Subtitle,Subtitle asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Dynamic Graphic,Dynamic Graphic asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Ticker,Ticker asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Promo,Promo asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Program,Program asset is not available with Amagi. Please deliver asset,Media Ingest
+Missing Asset,Blip,Commercial,Commercial asset is not available with Amagi. Please deliver asset,Commercial Ingest
+Disk Space Full,Any,Transport server,Hard disk space is scarce in Transport server. Please clear unwnated data and create more space,Customer System
+Disk Space Full,Any,Blip,Hard disk space is scarce in Blip. Please clear unwnated data and create more space,Customer System
+Disk Space Full,Any,Playout server,Hard disk space is scarce in Playout server. Please clear unwnated data and create more space,Customer System
+Disk Space Full,Any,Watermark server,Hard disk space is scarce in Watermark server. Please clear unwnated data and create more space,Customer System
+Disk Space Full,Any,Transcode server,Hard disk space is scarce in Transcode server. Please clear unwnated data and create more space,Customer System
+Disk Space Full,Any,Media processor,Hard disk space is scarce in Media processor. Please clear unwnated data and create more space,Customer System
+Disk Space Full,Any,Transport server,Hard disk space is scarce in Transport server. Please clear unwnated data and create more space. Update customer in case it is required,Amagi Support
+Disk Space Full,Any,Blip,Hard disk space is scarce in Blip. Please clear unwnated data and create more space. Update customer in case it is required,Amagi Support
+Disk Space Full,Any,Playout server,Hard disk space is scarce in Playout server. Please clear unwnated data and create more space. Update customer in case it is required,Amagi Support
+Disk Space Full,Any,Watermark server,Hard disk space is scarce in Watermark server. Please clear unwnated data and create more space. Update customer in case it is required,Amagi Support
+Disk Space Full,Any,Transcode server,Hard disk space is scarce in Transcode server. Please clear unwnated data and create more space. Update customer in case it is required,Amagi Support
+Disk Space Full,Any,Media processor,Hard disk space is scarce in Media processor. Please clear unwnated data and create more space. Update customer in case it is required,Amagi Support
+Playlist Missing,Blip,Playlist,Playlist is not yet available with Amagi. Please create or upload playlist,Scheduling
+Playlist Error,Blip,Playlist,Uploaded playlist has errors. Please resolve and publish playlist,Scheduling
+Error in Published Playlist,Blip,Playlist,Published playlist has errors. Please resolve and publish playlist,Scheduling
+Playlist Not Downloaded,Blip,Playlist,Published playlist is not available in the servers. Please analyze and republish playlist,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Media,Scheduled Media is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Logo,Scheduled Logo is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Graphics,Scheduled Graphics is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Subtitle,Scheduled Subtitle is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Audio,Scheduled Audio is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Dynamic graphics,Scheduled Dynamic graphics is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,EI Promo,Scheduled EI Promo is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Local ID,Scheduled Local ID is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Advance Monitor,Ticker,Scheduled Ticker is not playing as per schedule in advance monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Media,Scheduled Media is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Logo,Scheduled Logo is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Graphics,Scheduled Graphics is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Subtitle,Scheduled Subtitle is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Audio,Scheduled Audio is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Dynamic graphics,Scheduled Dynamic graphics is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,EI Promo,Scheduled EI Promo is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Local ID,Scheduled Local ID is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Realtime Monitor,Ticker,Scheduled Ticker is not playing as per schedule in monitoring server. Please analyze and update,Amagi Support
+Playout Not in Sync With Playlist,Field,Media,Scheduled Media is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Logo,Scheduled Logo is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Graphics,Scheduled Graphics is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Subtitle,Scheduled Subtitle is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Audio,Scheduled Audio is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Dynamic graphics,Scheduled Dynamic graphics is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,EI Promo,Scheduled EI Promo is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Local ID,Scheduled Local ID is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Playout Not in Sync With Playlist,Field,Ticker,Scheduled Ticker is not playing on-air. Amagi support team are getting more details and will keep you updated,Scheduling
+Audio and Video Not in Sync,Advance Monitor,Program,Scheduled Program is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Advance Monitor,Promo,Scheduled Promo is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Advance Monitor,Commercial,Scheduled Commercial is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Advance Monitor,Media,Scheduled Media is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Realtime Monitor,Program,Scheduled Program is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Realtime Monitor,Promo,Scheduled Promo is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Realtime Monitor,Commercial,Scheduled Commercial is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Realtime Monitor,Media,Scheduled Media is playing without audio and video sync. Please analyze.,Amagi Support
+Audio and Video Not in Sync,Field,Program,Scheduled Program is playing without audio and video sync. Amagi support team are getting more details and will keep you updated,Amagi Support
+Audio and Video Not in Sync,Field,Promo,Scheduled Promo is playing without audio and video sync. Amagi support team are getting more details and will keep you updated,Amagi Support
+Audio and Video Not in Sync,Field,Commercial,Scheduled Commercial is playing without audio and video sync. Amagi support team are getting more details and will keep you updated,Amagi Support
+Audio and Video Not in Sync,Field,Media,Scheduled Media is playing without audio and video sync. Amagi support team are getting more details and will keep you updated,Amagi Support
+Audio Track Issue,Advance Monitor,Audio,Current playing Audio track is not in sync with server configuration. Please analyze and update Customer as necessary,Amagi Support
+Audio Track Issue,Realtime Monitor,Audio,Current playing Audio track is not in sync with server configuration. Please analyze and update Customer as necessary,Amagi Support
+Audio Track Issue,Field,Audio,Current playing Audio track is not in sync with server configuration. Amagi support team are getting more details and will keep you updated,Amagi Support
+Subtitle Not in Sync,Advance Monitor,Subtitle,Subtitle is not in sync with Video. It could be a timecode issue. Please analyze and update Customer,Subtitle Ingest
+Subtitle Not in Sync,Realtime Monitor,Subtitle,Subtitle is not in sync with Video. It could be a timecode issue. Please analyze and update Customer,Subtitle Ingest
+Subtitle Not in Sync,Field,Subtitle,Subtitle is not in sync with Video. It could be a timecode issue. Amagi support team are getting more details and will keep you updated,Subtitle Ingest
+Incorrect Subtitle Language,Advance Monitor,Subtitle,Subtitle language is not in sync with server configuration. Please analyze and update Customer,Subtitle Ingest
+Incorrect Subtitle Language,Realtime Monitor,Subtitle,Subtitle language is not in sync with server configuration. Please analyze and update Customer,Subtitle Ingest
+Incorrect Subtitle Language,Field,Subtitle,Subtitle language is not in sync with server configuration. Amagi support team are getting more details and will keep you updated,Subtitle Ingest

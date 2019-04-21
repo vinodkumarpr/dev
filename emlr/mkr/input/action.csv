@@ -1,0 +1,11 @@
+Property,Value
+Action taken,Escalated to L2
+Action taken,Resolved
+Current Status,Open
+Current Status,Closed
+Alerted by,Customer
+Alerted by,Hawkeye
+Alerted by,Monitoring
+Alerted Time,{{date-time}}
+Operator,{{user}}
+Note,This is a preliminary incident report. If you have any concerns regarding this ticket; please reach out to us at Amagi MCR Monitoring Team (monitor@amagi.com)

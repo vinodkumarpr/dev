@@ -1,0 +1,280 @@
+Customer,Channel,Location,Delivery
+ACJ,ABS O Shopping,ABS NOC,Philippines
+ACJ,DTT O Shopping,ABS NOC,Philippines
+ACJ,SKY O Shopping,ABS NOC,Philippines
+ACJ,All,All,All
+AFRICAXP,Moja Love,Telemedia,Africa
+AFRICAXP,Passion TV,Kwese Facility,Africa
+AFRICAXP,All,All,All
+ARY,ARY,OSN Dubai ,Dubai
+ASN,ASN,Tata Chennai,HongKong
+B4U,B4U AFLAM,TATA Chennai,Abu Dhabi 
+B4U,B4U AFLAM,Apalya,Abu Dhabi 
+B4U,B4U AFLAM,India Monitoring,India 
+B4U,B4U APAC_Movies,India Monitoring,India 
+B4U,B4U APAC_Movies,AsiaSat,Dhaka
+B4U,B4U APAC_Movies,TATA Chennai,Dhaka
+B4U,B4U Ashirwad,B4U Office ,India
+B4U,B4U Ashirwad,India Monitoring,India 
+B4U,B4U Movies,India Monitoring,India
+B4U,B4U Movies,AsiaSat,India
+B4U,B4U Music,India Monitoring,India
+B4U,B4U Music,AsiaSat,India
+B4U,B4U PLUS,India Monitoring,India
+B4U,B4U PLUS,TATA Chennai,Abu Dhabi 
+B4U,B4U UK_Movies,India Monitoring,India
+B4U,B4U UK_Movies,Globecast,UK
+B4U,B4U UK_Music,India Monitoring,India
+B4U,B4U UK_Music,Globecast,UK
+B4U,B4U UK_Music,Mauritius Telecom,UK
+B4U,B4U UK_Music Amazon,Calypso,UK
+B4U,B4U US_Movies,India Monitoring,India
+B4U,B4U US_Movies,ATN Canada,US & Canada
+B4U,B4U US_Movies,United Teleport,US & Canada
+B4U,B4U US_Movies,Echostar,US & Canada
+B4U,B4U US_Movies,GreenDot,US & Canada
+B4U,B4U US_Movies,Air Link,US & Canada
+B4U,B4U US_Movies,Columbus Caribbean,US & Canada
+B4U,B4U US_Movies,DISH TV,US & Canada
+B4U,B4U US_Music,India Monitoring,India
+B4U,B4U US_Music,ATN Canada,US & Canada
+B4U,B4U US_Music,United Teleport,US & Canada
+B4U,B4U US_Music,Echostar,US & Canada
+B4U,B4U US_Music,GreenDot,US & Canada
+B4U,B4U US_Music,United Teleport,US & Canada
+B4U,B4U US_Music,TATA Chennai,US & Canada
+B4U,B4U US_Music,Dish TV,US & Canada
+B4U,B4U_AFRICA,India Monitoring,India
+B4U,B4U_AFRICA,Mauritius Telecom,Mauritius
+B4U,B4U_AFRICA,Telemedia,Africa
+B4U,B4U_AFRICA,Calypso,Africa
+B4U,All,All,All
+BLOOMEBERG-HD,BLOOMEBERG-HD,Globecast Singapore,Singapore
+CINEDIGM,Combat Go,AWS,US & Canada
+CINEDIGM,ConTV,Tata Chennai,US & Canada
+CINEDIGM,All,All,All
+COLORS-SA,COLORS-SA,DSTV South Africa,South Africa
+COLORS-SA,COLORS-SA,India Monitoring ,India
+CURIOSITY,CURIOSITY,TATA Chennai,Singapore
+CURIOSITY,CURIOSITY,India Monitoring,India
+DIMSUM,DIMSUM,Guangzhou ,Hong Kong
+DIMSUM,DIMSUM,Hong Kong ,Hong Kong
+DIMSUM,DIMSUM,APT ,Hong Kong
+DSPORT,DSPORT,Hong Kong APStar ,Hong Kong
+DSPORT,DSPORT,India Monitoring,India
+FLIK,FLIK,Indihome Cibinong,Jakarta
+FLIK,FLIK,India Monitoring ,India
+FLIK,Sinema Indonesia,Belleza,Jakarta
+FLIK,Sinema Indonesia,India Monitoring ,India
+FLIK,All,All,All
+FOODFOOD,Food Food MU,Mauritiaus telecom,Abu Dhabi 
+FOODFOOD,Food Food USA,Dish TV,US & Canada
+FOODFOOD,All,All,All
+GUSTO,Gusto,TATA Chennai ,Singapore
+HKITV,HKITV,Hong Kong,Hong Kong
+HORSE & COUNTRY,Australia HD,AWS,Australia
+HORSE & COUNTRY,Britain HD,AWS,UK
+HORSE & COUNTRY,Germany HD,AWS,Germany
+HORSE & COUNTRY,Germany HD,India Monitoring ,India
+HORSE & COUNTRY,Horse & Country Australia,Fetch TV,Australia
+HORSE & COUNTRY,Horse & Country Britain,India Monitoring ,India
+HORSE & COUNTRY,Horse & Country Britain,Arqiva,London
+HORSE & COUNTRY,Horse & Country Netherlands,India Monitoring ,India
+HORSE & COUNTRY,Horse & Country Netherlands,Media Choice,Netherlands
+HORSE & COUNTRY,Horse & Country Sweden,India Monitoring ,India
+HORSE & COUNTRY,Horse & Country Sweden,Teracom,Sweden
+HORSE & COUNTRY,Netherlands HD,AWS,Netherlands
+HORSE & COUNTRY,Sweden HD,AWS,Sweden
+HORSE & COUNTRY,USA HD,AWS,US & Canada
+HORSE & COUNTRY,All,All,All
+HUMTV,Hum Masala,RR Media Israel ,US & Canada
+HUMTV,Hum Sitaray ,RR Media Israel ,US & Canada
+HUMTV,Hum TV,RR Media Israel ,US & Canada
+HUMTV,Hum Masala,India Monitoring ,India
+HUMTV,Hum Sitaray ,India Monitoring ,India
+HUMTV,Hum TV,India Monitoring ,India
+HUMTV,All,All,All
+HUNGAMA,Amritvaani,AWS Airtel ,India
+HUNGAMA,Bhakti Sagar,AWS Airtel,India
+HUNGAMA,Dhamaal,AWS Airtel,India
+HUNGAMA,Dil Se,AWS Airtel,India
+HUNGAMA,Faadu,AWS Airtel,India
+HUNGAMA,Nazrana,AWS Airtel,India
+HUNGAMA,Pop Pataka,AWS Airtel,India
+HUNGAMA,Punjabi Tadka,AWS Airtel,India
+HUNGAMA,Sakkat,AWS Airtel,India
+HUNGAMA,Amritvaani,India Monitoring ,India
+HUNGAMA,Bhakti Sagar,India Monitoring ,India
+HUNGAMA,Dhamaal,India Monitoring ,India
+HUNGAMA,Dil Se,India Monitoring ,India
+HUNGAMA,Faadu,India Monitoring ,India
+HUNGAMA,Nazrana,India Monitoring ,India
+HUNGAMA,Pop Pataka,India Monitoring ,India
+HUNGAMA,Punjabi Tadka,India Monitoring ,India
+HUNGAMA,Sakkat,India Monitoring ,India
+HUNGAMA,All,All,All
+IMG,EDGEsport,Myanmar,Myanmar
+IMG,EDGEsport Australia,Fetch TV,Australia
+IMG,EDGEsport Live,Abu Dhabi,Abu Dhabi
+IMG,EDGEsport Live,India Monitoring,India Monitoring
+IMG,EDGEsport Live,Solomon,Solomon
+IMG,EDGEsport Live,Stockley Park ,Stockley Park 
+IMG,EDGEsport Live,Thailand,Thailand
+IMG,EDGEsport Live,Hong Kong,Hong Kong
+IMG,EDGEsport Live,Greece,Greece
+IMG,EDGEsport Live,Serbia,Serbia
+IMG,EDGEsport Live,Bulgaria,Bulgaria
+IMG,EDGEsport Live DTMF,Philippines,Philippines
+IMG,All,All,All
+LIGHTNING,Action Hollywood,ABS,Hong Kong
+LIGHTNING,Country TV,Sky NZ ,Hong Kong
+LIGHTNING,Country TV,India Monitoring ,India
+LIGHTNING,GHOM,ABS,Hong Kong
+LIGHTNING,Pet Club,ABS,Hong Kong
+LIGHTNING,Pulse,ABS,Hong Kong
+LIGHTNING,Rialto,Sky NZ ,Hong Kong
+LIGHTNING,All,All,All
+NDTV,NDTV,OSN Dubai,Dubai
+NDTVINT,NdtvSpice,NDTV Office India ,India 
+PBS,PBS,GoonHilly,UK
+PBS,PBS,Arqiva,UK
+PBS,PBS,India Monitoring ,India 
+PROSTREAM,Only Motors TV - UK,London ,UK
+QUEST,Quest TV India Monitoring,India Monitoring ,India
+QUEST,Quest TV WTSP (QUEST_0139) ,Tegna,US
+QUEST,Quest TV KHOU (QUEST_0140) ,Tegna,US
+QUEST,Quest TV WXIA (QUEST_0141) ,Tegna,US
+QUEST,Quest TV KARE (QUEST_0142) ,Tegna,US
+QUEST,Quest TV KPNX (QUEST_0143) ,Tegna,US
+QUEST,Quest TV KUSA (QUEST_0144) ,Tegna,US
+QUEST,Quest TV WFAA (QUEST_0145) ,Tegna,US
+QUEST,Quest TV KING (QUEST_0146) ,Tegna,US
+QUEST,Quest TV KXTV (QUEST_0147) ,Tegna,US
+QUEST,Quest TV WKYC (QUEST_0148) ,Tegna,US
+QUEST,Quest TV WJXX (QUEST_0149) ,Tegna,US
+QUEST,Quest TV KGW (QUEST_0150) ,Tegna,US
+QUEST,Quest TV KVUE (QUEST_0151) ,Tegna,US
+QUEST,Quest TV KSDK (QUEST_0152) ,Tegna,US
+QUEST,Quest TV KENS (QUEST_0153) ,Tegna,US
+QUEST,Quest TV WCNC (QUEST_0154) ,Tegna,US
+QUEST,Quest TV WFMY (QUEST_0155) ,Tegna,US
+QUEST,Quest TV WZZM (QUEST_0156) ,Tegna,US
+QUEST,Quest TV WWL (QUEST_0159) ,Tegna,US
+QUEST,Quest TV WGRZ (QUEST_0160) ,Tegna,US
+QUEST,Quest TV WUVC (QUEST_0161) ,Tegna,US
+QUEST,Quest TV WCSH (QUEST_0162) ,Tegna,US
+QUEST,Quest TV KTHV (QUEST_0163) ,Tegna,US
+QUEST,Quest TV WBIR (QUEST_0164) ,Tegna,US
+QUEST,Quest TV WLTX (QUEST_0165) ,Tegna,US
+QUEST,Quest TV KSKN (QUEST_0166) ,Tegna,US
+QUEST,Quest TV KTVB (QUEST_0168) ,Tegna,US
+QUEST,Quest TV KMSB (QUEST_0170) ,Tegna,US
+QUEST,Quest TV WVEC (QUEST_0171) ,Tegna,US
+QUEST,Quest TV WKRP (QUEST_0173) ,Tegna,US
+QUEST,QUEST TV WIWN (QUEST_0174) ,Tegna,US
+QUEST,QUEST TV WTVQ (QUEST_0177) ,Tegna,US
+QUEST,Quest TV KLCW (QUEST_0178) ,Tegna,US
+QUEST,Quest TV WGGS (QUEST_0179) ,Tegna,US
+QUEST,QUEST TV KGPT (QUEST_0180) ,Tegna,US
+QUEST,Quest TV KUVI (QUEST_0181) ,Tegna,US
+QUEST,QUEST TV KFTR (QUEST_0182) ,Tegna,US
+QUEST,QUEST TV WFPA (QUEST_0183) ,Tegna,US
+QUEST,QUEST TV KCWI (QUEST_0184) ,Tegna,US
+QUEST,QUEST TV WAMI (QUEST_0186) ,Tegna,US
+QUEST,Quest TV KTFF (QUEST_0187) ,Tegna,US
+QUEST,QUEST TV WMKE (QUEST_0188) ,Tegna,US
+QUEST,QUEST TV DTV (QUEST_0189) ,Tegna,US
+QUEST,QUEST TV KSHV (QUEST_0190) ,Tegna,US
+QUEST,QUEST TV WVNY (QUEST_0191) ,Tegna,US
+QUEST,QUEST TV KLUZ (QUEST_0192) ,Tegna,US
+QUEST,Quest TV WHAS (QUEST_0193) ,Tegna,US
+QUEST,QUEST TV WFLG (QUEST_0195) ,Tegna,US
+QUEST,QUEST TV KTMW (QUEST_0196) ,Tegna,US
+QUEST,QUEST TV KVUI (QUEST_0197) ,Tegna,US
+QUEST,QUEST TV WSCG (QUEST_0198) ,Tegna,US
+QUEST,QUEST TV WVEN (QUEST_0200) ,Tegna,US
+QUEST,QUEST TV WXFT (QUEST_0201) ,Tegna,US
+QUEST,QUEST TV WADL (QUEST_0202) ,Tegna,US
+QUEST,QUEST TV KGNG (QUEST_0203) ,Tegna,US
+QUEST,QUEST TV KTFN (QUEST_0204) ,Tegna,US
+QUEST,QUEST TV KNDM (QUEST_0205) ,Tegna,US
+QUEST,QUEST TV WMBC (QUEST_0208),Tegna,US
+QUEST,All,All,All
+REPUBLIC,REPUBLIC TV,OSN Dubai,Dubai
+SCRIPPS-CP,Fine Living Bulgaria,Equinix ,Bulgaria
+SCRIPPS-CP,Fine Living Bulgaria,India Monitoring ,India
+SCRIPPS-CP,Food Network Bulgaria,Equinix ,Bulgaria
+SCRIPPS-CP,Food Network Bulgaria,India Monitoring ,India
+SCRIPPS-CP,Food Network Dubai,BeIN,Dubai
+SCRIPPS-CP,Travel Channel Bulgaria,Equinix ,Bulgaria
+SCRIPPS-CP,Travel Channel Bulgaria,India Monitoring ,India
+SCRIPPS-CP,All,All,All
+SCRIPPS-STORM,SCRIPPS-STC (Russia),Orion Russia,Russia
+SCRIPPS-STORM,SCRIPPS-STORM (Hungary),HMX Hungary,Hungary
+SCRIPPS-STORM,All,All,All
+TASTEMADE,Tastemade East Coast,AWS,East cost 
+TASTEMADE,Tastemade West Coast,AWS,West Cost
+TASTEMADE,All,All,All
+TERN-CP,Insight HD,TATA Chennai,India
+TERN-Storm,Insight HD - PT,MGW Hilversum NL,Amsterdam 
+TERN-Storm,Insight HD - PT,vodafone Portugal ,Amsterdam 
+TIMESNOW,TIMESNOW-INTL,OSN Dubai,Dubai
+TIMESNOW,TIMESNOW-INTL,Mumbai,India
+TURNER,Toonami Africa,Tata Statford Data Center,Africa
+TURNER,HBO Pakistan,ARY Pakistan,Pakistan
+TURNER,Warner TV,Tata Statford Data Center,France
+TURNER,Toonami Africa,India Monitoring ,India
+TURNER,HBO Pakistan,India Monitoring ,India
+TURNER,Warner TV,India Monitoring ,India
+TURNER,All,All,All
+TURNER-NORDIC,CN Africa RoA,Lynx NOC,Rest of Africa
+TURNER-NORDIC,TNT Denmark,Lynx NOC,Denmark
+TURNER-NORDIC,TNT Norway,Lynx NOC,Norway
+TURNER-NORDIC,TNT Sverige,Lynx NOC,Sweden
+TURNER-NORDIC,CN Nordic,Lynx NOC,Norway
+TURNER-NORDIC,CN Sweden,Lynx NOC,Sweden
+TURNER-NORDIC,Boomerang Nordics,Lynx NOC,Norway
+TURNER-NORDIC,CN Africa RoA,India Monitoring ,India
+TURNER-NORDIC,TNT Denmark,India Monitoring ,India
+TURNER-NORDIC,TNT Norway,India Monitoring ,India
+TURNER-NORDIC,TNT Sverige,India Monitoring ,India
+TURNER-NORDIC,CN Nordic,India Monitoring ,India
+TURNER-NORDIC,CN Sweden,India Monitoring ,India
+TURNER-NORDIC,Boomerang Nordics,India Monitoring ,India
+TURNER-NORDIC,All,All,All
+TYT,The Young Turks,Core site LA,US
+TYT,The Young Turks,Equinix Chicago ,US
+VIACOM18,Colors Bangla,DISH TV,US
+VIACOM18,Colors Kannada,DISH TV,US
+VIACOM18,Colors Marathi,DISH TV,US
+VIACOM18,Rishtey Cineplex US,DISH TV,US
+VIACOM18,Colors Bangla, Tata Chennai ,India
+VIACOM18,Colors Kannada, Tata Chennai ,India
+VIACOM18,Colors Marathi, Tata Chennai ,India
+VIACOM18,Rishtey Cineplex US, Tata Chennai ,India
+VIACOM18,Colors Bangla,India Monitoring ,India
+VIACOM18,Colors Kannada,India Monitoring ,India
+VIACOM18,Colors Marathi,India Monitoring ,India
+VIACOM18,Rishtey Cineplex US,India Monitoring ,India
+VIACOM18,All,All,All
+VICELAND,VICELAND Africa,Partner Israel,Africa
+VICELAND,VICELAND Belgium,EMG,Belgium
+VICELAND,VICELAND Belgium,India Monitoring ,India
+VICELAND,VICELAND NL,EMG,NL
+VICELAND,VICELAND NL,India Monitoring ,India
+VICELAND,VICELAND NZ,SKY-NEWZEALAND,NEWZEALAND
+VICELAND,VICELAND NZ,India Monitoring ,India
+VICELAND,VICELAND Wallonia,EMG,Wallonia
+VICELAND,VICELAND Wallonia,India Monitoring ,India
+VICELAND,All,All,All
+WATCHTOWER,watchtower,EutelSat Teleport,France
+WATCHTOWER,watchtower popup,EutelSat Teleport,France
+WHISPERMEDIA,WHISPERMEDIA,Indonesia,Indonesia
+ZEE ME,Zee Aflam,DISH TV,US & Canada
+ZEE ME,Zee Aflam,Tata Chennai ,US & Canada
+ZEE ME,Zee Aflam,India Monitoring ,India
+ZEE ME,Zee Alwan,DISH TV,US & Canada
+ZEE ME,Zee Alwan,Tata Chennai ,US & Canada
+ZEE ME,Zee Alwan,India Monitoring ,India
+ZEE ME,All,All,All
+ZEE-INTL,ZEE-INTL,Zee Office Noida ,India

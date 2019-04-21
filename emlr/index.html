@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>emlr</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="grey" ng-app="emlrApp" class="ng-scope">
+
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a href="#" class="list-group-item active waves-effect">
+                                <i class="fa fa-pie-chart mr-3"></i>emlr
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="list-group-item list-group-item-action waves-effect">
+                                <i class="fa fa-user mr-3"></i>Recipients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="list-group-item list-group-item-action waves-effect">
+                                <i class="fa fa-tv mr-3"></i>Channels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="list-group-item list-group-item-action waves-effect">
+                                <i class="fa fa-cog mr-3"></i>Issues</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="pt-5">
+        <div class="container-fluid mt-5" ng-controller="emlrController" ngcloak>
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-12 mb-1">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <div class="container-fluid" style="background-color:transparent">
+                                <div class="col top-buffer vert-condensed" style="margin: 0%">
+                                    <table class="table vert-condensed table-bordered">
+                                        <th class="vert-condensed"
+                                            style="vertical-align: top; margin-left: 0px;width: 15%;">Recipient</th>
+                                        <td class="vert-condensed" style="width: 85%;">
+                                            <div id="email_recipients">
+                                                <textarea id="email_recipients_text" class="form-control"
+                                                    style="vertical-align: top; margin-left: 10px; width: 100%">This is recipients.</textarea>
+                                            </div>
+                                        </td>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+        <div class="container-fluid " ng-controller="emlrController" ngcloak>
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-12 mb-1">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <div class="container-fluid" style="background-color:transparent ">
+                                <div class="row">
+                                    <div class="col top-buffer">
+                                        <div id="details_container" style="width:100%;background-color:azure">
+                                            <div class="row wow fadeIn">
+                                                <!--Grid column-->
+                                                <div class="col-md-12">
+                                                    <!--Card-->
+                                                    <div class="card mt-1">
+                                                        <!--Card content-->
+                                                        <div class="card-body">
+                                                            <!-- Table  -->
+                                                            <table class="table table-sm table-hover table-borderless">
+                                                                <!-- Table body -->
+                                                                <tbody>
+                                                                    <tr ng-repeat="issueItem in issues.props"
+                                                                        padding-top="0px">
+                                                                        <th valign="middle" scope="row" width="13%">
+                                                                            <span
+                                                                                class="label label-warning">{{issueItem}}</span>
+                                                                        <td width="42%">
+                                                                            <select class='form-control'
+                                                                                ng-model=issues.selected[issueItem]
+                                                                                ng-change="issuesSelectionChanged(issueItem)"
+                                                                                name="{{SelectControlIdPrefix + issueItem}}"
+                                                                                id="{{SelectControlIdPrefix + issueItem}}">''
+                                                                                <option
+                                                                                    ng-repeat="option in getIssueOptions(issueItem)"
+                                                                                    value="{{option}}">
+                                                                                    {{option}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td width="45%">
+                                                                            <input type="text" class="form-control"
+                                                                                id="{{InputControlIdPrefix + issueItem}}"
+                                                                                value="{{issues.selected[issueItem]}}" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <!-- Table body -->
+                                                            </table>
+                                                            <!-- Table  -->
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Card-->
+                                                    <!--Card-->
+                                                    <div class="card mt-1">
+                                                        <!--Card content-->
+                                                        <div class="card-body">
+                                                            <!-- Table  -->
+                                                            <table class="table table-hover table-borderless">
+                                                                <!-- Table body -->
+                                                                <tbody>
+                                                                    <tr ng-repeat="channelItem in channels.props">
+                                                                        <th valign="middle" scope="row" width="13%">
+                                                                            <label>{{channelItem}}</label></t>
+                                                                        <td width="42%">
+                                                                            <select class='form-control'
+                                                                                ng-model=channels.selected[channelItem]
+                                                                                ng-change="channelsSelectionChanged(channelItem)"
+                                                                                name="{{SelectControlIdPrefix + channelItem}}"
+                                                                                id="{{SelectControlIdPrefix + channelItem}}">''
+                                                                                <option
+                                                                                    ng-repeat="option in getChannelOptions(channelItem)"
+                                                                                    value="{{option}}">
+                                                                                    {{option}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td width="45%">
+                                                                            <input type="text"
+                                                                                class="form-control input-sm"
+                                                                                id="{{InputControlIdPrefix + channelItem}}"
+                                                                                value="{{channels.selected[channelItem]}}" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <!-- Table body -->
+                                                            </table>
+                                                            <!-- Table  -->
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Card-->
+                                                    <!--Card-->
+                                                    <div class="card mt-1">
+                                                        <!--Card content-->
+                                                        <div class="card-body">
+                                                            <!-- Table  -->
+                                                            <table class="table table-hover table-borderless">
+                                                                <!-- Table body -->
+                                                                <tbody>
+                                                                    <tr ng-repeat="actionItem in actions.props">
+                                                                        <th valign="middle" scope="row" width="13%">
+                                                                            <label>{{actionItem}}</label></t>
+                                                                        <td width="42%">
+                                                                            <select class='form-control'
+                                                                                ng-model=actions.selected[actionItem]
+                                                                                ng-change="actionsSelectionChanged(actionItem)"
+                                                                                name="{{SelectControlIdPrefix + actionItem}}"
+                                                                                id="{{SelectControlIdPrefix + actionItem}}">''
+                                                                                <option
+                                                                                    ng-repeat="option in getActionOptions(actionItem)"
+                                                                                    value="{{option}}">
+                                                                                    {{option}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td width="45%">
+                                                                            <input type="text"
+                                                                                class="form-control input-sm"
+                                                                                id="{{InputControlIdPrefix + actionItem}}"
+                                                                                value="{{actions.selected[actionItem]}}" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <!-- Table body -->
+                                                            </table>
+                                                            <!-- Table  -->
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Card-->
+                                                </div>
+                                                <!--Grid column-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+    </main>
+    <!--Main layout-->
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+    <script src="js/emlr/props.js"></script>
+    <script src="js/emlr/emlrApp.js"></script>
+    <script src="js/emlr/controllers/emlrController.js"></script>
+    <script src="js/emlr/services/emlrService.js"></script>
+
+</body>
+
+</html>
