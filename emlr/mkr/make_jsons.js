@@ -1,5 +1,3 @@
-let csvToJson = require('convert-csv-to-json');
-let csvparser = require('csv-parse');
 let fs = require("fs");
 
 let PROPS_KEY = "props";

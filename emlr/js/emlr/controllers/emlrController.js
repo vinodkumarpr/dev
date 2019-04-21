@@ -1,16 +1,10 @@
 (function (app) {
     var emlrController = function ($scope, $rootScope, $http, emlrService) {
-        var i = 0;
         $scope.issueItems = null;
         $scope.SelectControlIdPrefix = "SelectCtrl";
         $scope.InputControlIdPrefix = "InputCtrl";
         $scope.recipients = "This is test....";
         $scope.showMainLayout = true;
-
-        var init = function () {
-            i = i + 1;
-            console.log("init is called " + i);
-        };
 
         var initialize = function () {
             emlrService.init(() => {
@@ -185,8 +179,6 @@
             return null;
         }
 
-       init();
-       
        initialize();
     };
     app.controller("emlrController", ["$scope", "$rootScope", "$http", "emlrService", emlrController]);

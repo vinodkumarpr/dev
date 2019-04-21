@@ -63,8 +63,7 @@
                 return getFilteredPropOptions(prop["props"], filter.slice(1));
             }
             return null;
-        }
-                
+        }                
 
         emlrFactory.init = function (callback) {
             callback();
