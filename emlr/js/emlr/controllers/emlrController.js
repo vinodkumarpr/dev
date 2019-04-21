@@ -1,10 +1,11 @@
 (function (app) {
-    var emlrController = function ($scope, $http, emlrService) {
+    var emlrController = function ($scope, $rootScope, $http, emlrService) {
         var i = 0;
         $scope.issueItems = null;
         $scope.SelectControlIdPrefix = "SelectCtrl";
         $scope.InputControlIdPrefix = "InputCtrl";
         $scope.recipients = "This is test....";
+        $scope.showMainLayout = true;
 
         var init = function () {
             i = i + 1;
@@ -26,6 +27,10 @@
                 initializeItems();
             }); 
         }
+
+        $scope.$on('mainlayout-display-updated', function(event, value) {
+            $scope.showMainLayout = value;
+        });
 
         function initializeItems(){
             $scope.issues["selected"] = getDefaultOptions($scope.issues["props"], emlrService.getIssueOptions);
@@ -184,5 +189,5 @@
        
        initialize();
     };
-    app.controller("emlrController", ["$scope", "$http", "emlrService", emlrController]);
+    app.controller("emlrController", ["$scope", "$rootScope", "$http", "emlrService", emlrController]);
 }(angular.module("emlrApp")));
