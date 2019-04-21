@@ -58,8 +58,8 @@
     <!--Main Navigation-->
 
     <!--Main layout-->
-    <main class="pt-5">
-        <div class="container-fluid mt-5" ng-controller="emlrController" ngcloak>
+    <main class="pt-5" ng-controller="emlrController" ngcloak>
+        <div class="container-fluid mt-5" >
             <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->
@@ -76,7 +76,7 @@
                                         <td class="vert-condensed" style="width: 85%;">
                                             <div id="email_recipients">
                                                 <textarea id="email_recipients_text" class="form-control"
-                                                    style="vertical-align: top; margin-left: 10px; width: 100%">This is recipients.</textarea>
+                                                    style="vertical-align: top; margin-left: 10px; width: 100%">{{recipients}}</textarea>
                                             </div>
                                         </td>
                                     </table>
@@ -92,7 +92,7 @@
             <!--Grid row-->
 
         </div>
-        <div class="container-fluid " ng-controller="emlrController" ngcloak>
+        <div class="container-fluid " >
             <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->

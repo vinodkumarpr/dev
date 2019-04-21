@@ -4,6 +4,7 @@
         $scope.issueItems = null;
         $scope.SelectControlIdPrefix = "SelectCtrl";
         $scope.InputControlIdPrefix = "InputCtrl";
+        $scope.recipients = "This is test....";
 
         var init = function () {
             i = i + 1;
@@ -30,6 +31,8 @@
             $scope.issues["selected"] = getDefaultOptions($scope.issues["props"], emlrService.getIssueOptions);
             $scope.channels["selected"] = getDefaultOptions($scope.channels["props"], emlrService.getChannelOptions);
             $scope.actions["selected"] = getSimpleDefaultOptions($scope.actions["props"], emlrService.getActionOptions);
+
+            resetRecipients();
         }
 
         function getDefaultOptions(props, optionsProvider){
@@ -147,10 +150,7 @@
         }
 
         function resetRecipients(){
-            let recipients = getRecipients();
-
-            let element = document.getElementById("email_recipients_text");
-            element.value = recipients;
+            $scope.recipients = getRecipients();
         }
 
         function getRecipients(){
@@ -159,7 +159,7 @@
 
             for (let i = 0; i < props.length; i++) {
                 let element = document.getElementById($scope.InputControlIdPrefix + props[i]);
-                values[props[i]] = element.value;
+                values[props[i]] = element ? element.value : $scope.channels["selected"][props[i]];
             }
 
             for (let i = 0; i < __recipients_props.props.length; i++){
@@ -173,7 +173,8 @@
                 }
                 if (matching){
                     let element = document.getElementById($scope.InputControlIdPrefix + "Actor");
-                    return __recipients_props.props[i][element.value];
+                    return element ? __recipients_props.props[i][element.value] :
+                        __recipients_props.props[i][$scope.issues["selected"]["Actor"]];
                 }
             }
             return null;
