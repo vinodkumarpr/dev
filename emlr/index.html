@@ -29,9 +29,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li ng-repeat="item in header.items" class="{{item.class}}"">
-                                <a href="#" class="{{item.linkClass}}" ng-click="headerSelected($index)">
-                                        <i class="{{item.iconClass}}"></i>{{item.title}}
-                                    </a>        
+                                <a href=" #" class="{{item.linkClass}}" ng-click="headerSelected($index)">
+                            <i class="{{item.iconClass}}"></i>{{item.title}}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -106,6 +106,7 @@
                                                                         <th valign="middle" scope="row" width="13%">
                                                                             <span
                                                                                 class="label label-warning">{{issueItem}}</span>
+                                                                        </th>
                                                                         <td width="42%">
                                                                             <select class='form-control'
                                                                                 ng-model=issues.selected[issueItem]
@@ -142,7 +143,7 @@
                                                                 <tbody>
                                                                     <tr ng-repeat="channelItem in channels.props">
                                                                         <th valign="middle" scope="row" width="13%">
-                                                                            <label>{{channelItem}}</label></t>
+                                                                            <label>{{channelItem}}</label></th>
                                                                         <td width="42%">
                                                                             <select class='form-control'
                                                                                 ng-model=channels.selected[channelItem]
@@ -180,7 +181,7 @@
                                                                 <tbody>
                                                                     <tr ng-repeat="actionItem in actions.props">
                                                                         <th valign="middle" scope="row" width="13%">
-                                                                            <label>{{actionItem}}</label></t>
+                                                                            <label>{{actionItem}}</label></th>
                                                                         <td width="42%">
                                                                             <select class='form-control'
                                                                                 ng-model=actions.selected[actionItem]
@@ -240,11 +241,38 @@
                         <!--Card content-->
                         <div class="card-body">
                             <div class="container-fluid" style="background-color:transparent">
-                                    Upload csv file<br><br>
-                                    <input type="file" id="file_input">
-                                    <button type="button" ng-click="loadCSV()">Load</button>
+                                Upload csv file<br><br>
+                                <input type="file" id="file_input">
+                                <button type="button" ng-click="loadCSV()">Load</button>
                                 </p>
                             </div>
+                            <!-- Table  -->
+                            <table class="table table-hover table-sm table-borderless">
+                                <!-- Table body -->
+                                <tbody>
+                                    <tr>
+                                        <th style="word-wrap: break-word" ng-repeat="column in table_list.columns">
+                                            {{column}}
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="row in table_list.rows track by $index">
+                                        <th ng-repeat="item in row.common track by $index"
+                                            style="word-wrap: break-word">
+                                            {{item}}
+                                        </th>
+                                        <td>
+                                            <ul class="list-group borderless">
+                                                <li class="list-group-item border-0" style="background-color: transparent"
+                                                    ng-repeat="item in row.values track by $index">
+                                                    {{item}}
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!-- Table body -->
+                            </table>
+                            <!-- Table  -->
                         </div>
                     </div>
                 </div>
@@ -280,11 +308,11 @@
     <script src="js/emlr/emlrApp.js"></script>
     <script src="js/emlr/controllers/emlrController.js"></script>
     <script src="js/emlr/controllers/headerController.js"></script>
-    <script src="js/emlr/controllers/recipientsController.js"></script>    
+    <script src="js/emlr/controllers/recipientsController.js"></script>
     <script src="js/emlr/services/emlrService.js"></script>
     <script src="js/emlr/services/recipientService.js"></script>
     <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
-    
+
 </body>
 
 </html>

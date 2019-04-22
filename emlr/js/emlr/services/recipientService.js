@@ -7,20 +7,24 @@
             callback();
         };
 
-        recipientFactory.loadCSV = function(file, callback){
+        recipientFactory.loadCSV = function (file, callback) {
             var reader = new FileReader();
             reader.onloadend = function (e) {
-                callback(e.target.result);
+                csv({
+                    noheader: true,
+                    output: "csv"
+                })
+                    .fromString(e.target.result)
+                    .then(function (result) {
+                        let list = {
+                            "columns": result[0],
+                            "rows": result.slice(1)
+                        }
+                        callback(list);
+                    });
             };
             reader.readAsText(file);
         }
-        csv({
-            
-        })
-        .fromString("a,b,c\n1,2,3")
-        .then(function(result){
-            console.log(result);
-        });
         return recipientFactory;
     };
     app.factory("recipientService", recipientService);

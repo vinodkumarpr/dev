@@ -44,42 +44,58 @@ function getFilteredProps(props, filter){
     return null;
 }
 
-let highLevelProps = [];
-getHighLevelProps(props.__issues_props.props, highLevelProps)
-console.log(highLevelProps);
+function testprops(){
+    let highLevelProps = [];
+    getHighLevelProps(props.__issues_props.props, highLevelProps)
+    console.log(highLevelProps);
 
-let actionProps = [];
-actionProps = getSimpleProps(props.__action_props.props)
-console.log(actionProps);
+    let actionProps = [];
+    actionProps = getSimpleProps(props.__action_props.props)
+    console.log(actionProps);
 
-highLevelProps = [];
-getHighLevelProps(props.__channels_props.props, highLevelProps)
-console.log(highLevelProps);
+    highLevelProps = [];
+    getHighLevelProps(props.__channels_props.props, highLevelProps)
+    console.log(highLevelProps);
 
-let filter = [
-    {
-        "name" : "Issue",
-        "value" : "Asset Transcode Failed"
-    },
-    {
-        "name" : "Action",
-        "value" : "Delivered Program has failed to transcode. Please analyze and update Customer"
-    },
-    {
-        "name" : "Actor",
-        "value" : "*"
+    let filter = [
+        {
+            "name" : "Issue",
+            "value" : "Asset Transcode Failed"
+        },
+        {
+            "name" : "Action",
+            "value" : "Delivered Program has failed to transcode. Please analyze and update Customer"
+        },
+        {
+            "name" : "Actor",
+            "value" : "*"
+        }
+    ];
+    let filteredProps = getFilteredProps(props.__issues_props.props, filter);
+    console.log(filteredProps);
+
+    let values = {
+        "Customer" : "ACJ",
+        "Channel" : "ABS",
+        "Actor" : "Media"
     }
-];
-let filteredProps = getFilteredProps(props.__issues_props.props, filter);
-console.log(filteredProps);
-
-let values = {
-    "Customer" : "ACJ",
-    "Channel" : "ABS",
-    "Actor" : "Media"
+    
+    // for (value in values){
+    //     console.log(value);
+    //     console.log(values[value]);
+    // }
 }
 
-for (value in values){
-    console.log(value);
-    console.log(values[value]);
+
+function process(filepath){
+    const csv = require('csvtojson')
+    csv({
+	    noheader : true,
+        output : "csv"    
+    }).fromFile(filepath)
+    .then((csvRow) => {
+        console.log(csvRow);
+    });   
 }
+
+process("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v2.0.csv");
