@@ -250,47 +250,48 @@
                             <table class="table table-hover table-sm table-borderless">
                                 <!-- Table body -->
                                 <tbody>
-                                    <tr>
-                                        <th style="word-wrap: break-word" ng-repeat="column in table_list.columns">
-                                            {{column}}
-                                        </th>
-                                    </tr>
                                     <tr ng-repeat="row in table_list.rows track by $index">
-                                        <th ng-repeat="item in row.channel track by $index"
-                                            style="word-wrap: break-word">
-                                            {{item}}
-                                        </th>
                                         <td>
-
                                             <!--Accordion wrapper-->
-                                            <div class="accordion md-accordion" id="accordionEx" role="tablist"
+                                            <div class="accordion md-accordion" id="{{'accordionEx' + $index}}" role="tablist"
                                                 aria-multiselectable="true">
-
                                                 <!-- Accordion card -->
                                                 <div class="card">
 
                                                     <!-- Card header -->
-                                                    <div class="card-header" role="tab" id="headingOne1">
-                                                        <a data-toggle="collapse" data-parent="#accordionEx"
-                                                            href="#collapseOne1" aria-expanded="true"
-                                                            aria-controls="collapseOne1">
+                                                    <div class="card-header" role="tab" id="{{'headingOne' + $index}}">
+                                                        <a data-toggle="collapse" data-parent="{{'#' + 'accordionEx' + $index}}"
+                                                            href="{{'#' + 'collapseOne' + $index}}" aria-expanded="true"
+                                                            aria-controls="{{'collapseOne' + $index}}">
                                                             <div class="mb-0">
-                                                                Collapsible Group Item #1 <i
-                                                                    class="fa fa-angle-down rotate-icon"></i>
+                                                                <table>
+                                                                    <tr>
+                                                                        <th ng-repeat="item in row.channel track by $index"
+                                                                            style="word-wrap: break-word">
+                                                                            {{item}}
+                                                                        </th>
+                                                                        <td>
+                                                                            <i class="fa fa-angle-down rotate-icon"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+                                                                </table>
                                                             </div>
                                                         </a>
                                                     </div>
 
                                                     <!-- Card body -->
-                                                    <div id="collapseOne1" class="collapse show" role="tabpanel"
-                                                        aria-labelledby="headingOne1" data-parent="#accordionEx">
+                                                    <div id="{{'collapseOne' + $index}}" class="collapse show" role="tabpanel"
+                                                        aria-labelledby="{{'headingOne' + $index}}" data-parent="{{'#' + 'accordionEx' + $index}}">
                                                         <div class="card-body">
                                                             <table class="table table-sm table-borderless"
                                                                 style="background-color: transparent">
                                                                 <tr ng-repeat="item in row.recipients track by $index">
-                                                                    <td style="background-color: transparent">{{item}}
+                                                                    <td style="background-color: transparent">
+                                                                        {{item}}
                                                                     </td>
-                                                                    <td style="background-color: transparent">{{item}}
+                                                                    <td style="background-color: transparent">
+                                                                        {{item}}
                                                                     </td>
                                                                 </tr>
                                                             </table>
