@@ -33,7 +33,7 @@
         $scope.loadCSV = function () {
             var file = document.getElementById("file_input").files[0];
             recipientService.loadCSV(file, (list)=>{
-                //$scope.table_list["columns"] = list.columns;
+                $scope.table_list["columns"] = list.columns.slice(2);
                 $scope.table_list["rows"] = list.rows.map((row) => {
                     return {
                         "channel" : row.slice(0, 2),

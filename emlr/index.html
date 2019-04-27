@@ -281,14 +281,14 @@
                                                     </div>
 
                                                     <!-- Card body -->
-                                                    <div id="{{'collapseOne' + $index}}" class="collapse show" role="tabpanel"
+                                                    <div id="{{'collapseOne' + $index}}" class="collapse hide" role="tabpanel"
                                                         aria-labelledby="{{'headingOne' + $index}}" data-parent="{{'#' + 'accordionEx' + $index}}">
                                                         <div class="card-body">
                                                             <table class="table table-sm table-borderless"
                                                                 style="background-color: transparent">
                                                                 <tr ng-repeat="item in row.recipients track by $index">
-                                                                    <td style="background-color: transparent">
-                                                                        {{item}}
+                                                                    <td style="background-color: transparent" width="20%">
+                                                                        {{table_list.columns[$index]}}
                                                                     </td>
                                                                     <td style="background-color: transparent">
                                                                         {{item}}
