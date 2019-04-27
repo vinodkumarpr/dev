@@ -242,8 +242,8 @@
                         <div class="card-body">
                             <div class="container-fluid" style="background-color:transparent">
                                 Upload csv file<br><br>
-                                <input type="file" id="file_input">
-                                <button type="button" ng-click="loadCSV()">Load</button>
+                                <input class="file" type="file" id="file_input">
+                                <button class="btn btn-default" type="button" ng-click="loadCSV()">Load</button>
                                 </p>
                             </div>
                             <!-- Table  -->
@@ -256,17 +256,53 @@
                                         </th>
                                     </tr>
                                     <tr ng-repeat="row in table_list.rows track by $index">
-                                        <th ng-repeat="item in row.common track by $index"
+                                        <th ng-repeat="item in row.channel track by $index"
                                             style="word-wrap: break-word">
                                             {{item}}
                                         </th>
                                         <td>
-                                            <ul class="list-group borderless">
-                                                <li class="list-group-item border-0" style="background-color: transparent"
-                                                    ng-repeat="item in row.values track by $index">
-                                                    {{item}}
-                                                </li>
-                                            </ul>
+
+                                            <!--Accordion wrapper-->
+                                            <div class="accordion md-accordion" id="accordionEx" role="tablist"
+                                                aria-multiselectable="true">
+
+                                                <!-- Accordion card -->
+                                                <div class="card">
+
+                                                    <!-- Card header -->
+                                                    <div class="card-header" role="tab" id="headingOne1">
+                                                        <a data-toggle="collapse" data-parent="#accordionEx"
+                                                            href="#collapseOne1" aria-expanded="true"
+                                                            aria-controls="collapseOne1">
+                                                            <div class="mb-0">
+                                                                Collapsible Group Item #1 <i
+                                                                    class="fa fa-angle-down rotate-icon"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+                                                    <!-- Card body -->
+                                                    <div id="collapseOne1" class="collapse show" role="tabpanel"
+                                                        aria-labelledby="headingOne1" data-parent="#accordionEx">
+                                                        <div class="card-body">
+                                                            <table class="table table-sm table-borderless"
+                                                                style="background-color: transparent">
+                                                                <tr ng-repeat="item in row.recipients track by $index">
+                                                                    <td style="background-color: transparent">{{item}}
+                                                                    </td>
+                                                                    <td style="background-color: transparent">{{item}}
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- Accordion card -->
+
+
+                                            </div>
+                                            <!-- Accordion wrapper -->
                                         </td>
                                     </tr>
                                 </tbody>

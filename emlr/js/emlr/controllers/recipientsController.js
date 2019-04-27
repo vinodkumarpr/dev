@@ -7,12 +7,12 @@
             ],
             "rows" : [
                 {
-                    "common" : ["Customer", "Channel"],
-                    "values" :  ["1_1", "1_2", "1_3"]
+                    "channel" : ["Customer", "Channel"],
+                    "recipients" :  ["1_1", "1_2", "1_3"]
                 },
                 {
-                    "common" : ["Customer1", "Channel1"],
-                    "values" :  ["2_1", "2_2", "2_3"]
+                    "channel" : ["Customer1", "Channel1"],
+                    "recipients" :  ["2_1", "2_2", "2_3"]
                 }
             ],
             "recipient_types" : 
@@ -36,8 +36,8 @@
                 //$scope.table_list["columns"] = list.columns;
                 $scope.table_list["rows"] = list.rows.map((row) => {
                     return {
-                        "common" : row.slice(0, 2),
-                        "values" : row.slice(2)
+                        "channel" : row.slice(0, 2),
+                        "recipients" : row.slice(2)
                     }
                 });
                 console.log("List is " + $scope.table_list);
