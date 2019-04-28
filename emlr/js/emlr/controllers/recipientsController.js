@@ -19,8 +19,6 @@
             ["a", "b", "c"]
         };
 
-        console.log("List " + $scope.table_list);
-
         var initialize = function () {
             recipientService.init(() => {
             }); 

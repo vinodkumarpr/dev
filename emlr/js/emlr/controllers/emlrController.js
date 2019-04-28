@@ -156,6 +156,10 @@
             let props = ["Customer", "Channel"];
             let values = {};
 
+            if (typeof __recipients_props == 'undefined' || !__recipients_props){
+                return null;
+            }
+
             for (let i = 0; i < props.length; i++) {
                 let element = document.getElementById($scope.InputControlIdPrefix + props[i]);
                 values[props[i]] = element ? element.value : $scope.channels["selected"][props[i]];
