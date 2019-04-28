@@ -33,53 +33,57 @@ function testcsv(filepath){
     })
 }
 
+function convertRows(rows, relational){
+    let items = {};
+    
+    for (let row = 0; row < rows.length; row++) {
+        var currentProp = items;
+
+        //
+        // Walk through the columns and prepare properties
+        //
+        let cols = Object.keys(rows[row]);
+        for (let col = 0; col < cols.length; col++) {
+            //
+            // If "props" is not available, add the property
+            //
+            if (!currentProp.hasOwnProperty(PROPS_KEY)) {
+                currentProp[PROPS_KEY] = [];
+            }
+
+            propName = cols[col];
+            propVal = rows[row][propName];
+            if (!relational){
+                propName = propVal;
+            }
+
+            currentProps = currentProp[PROPS_KEY]; 
+            propItem = getProp(currentProps, propName, propVal);
+            if (propItem == null) {
+                //
+                // If property item is not present, insert item to props list
+                //
+                propItem = putProp(currentProps, propName, propVal);
+            }
+
+            currentProp = propItem;
+        }
+    }
+    var jsonText = JSON.stringify(items, null, 4);
+    return jsonText;
+}
+
 function prepareProperties(filepath, relational, callback) {
     const csv = require('csvtojson');
     csv()
     .fromFile(filepath)
     .then((rows)=> {
-        let items = {};
-    
-        for (let row = 0; row < rows.length; row++) {
-            var currentProp = items;
-    
-            //
-            // Walk through the columns and prepare properties
-            //
-            let cols = Object.keys(rows[row]);
-            for (let col = 0; col < cols.length; col++) {
-                //
-                // If "props" is not available, add the property
-                //
-                if (!currentProp.hasOwnProperty(PROPS_KEY)) {
-                    currentProp[PROPS_KEY] = [];
-                }
-    
-                propName = cols[col];
-                propVal = rows[row][propName];
-                if (!relational){
-                    propName = propVal;
-                }
-    
-                currentProps = currentProp[PROPS_KEY]; 
-                propItem = getProp(currentProps, propName, propVal);
-                if (propItem == null) {
-                    //
-                    // If property item is not present, insert item to props list
-                    //
-                    propItem = putProp(currentProps, propName, propVal);
-                }
-    
-                currentProp = propItem;
-            }
-        }
-        var jsonText = JSON.stringify(items, null, 4);
-    
+        jsonText = convertRows(rows, relational);
         callback(jsonText);    
     })
 }
 
-function makeArrayProperties(filepath, propFile, callback){
+function writeArrayProperties(filepath, propFile, callback){
     const csv = require('csvtojson');
     
     csv()
@@ -94,16 +98,14 @@ function makeArrayProperties(filepath, propFile, callback){
     });
 }
 
-function makeProperties(csvFile, propFile, callback){
+function writeProperties(csvFile, propFile, callback){
     prepareProperties(csvFile, true, (properties) =>{
-        //properties = properties.replace(/\\r/g, '');
         writeToFile(propFile, properties);    
     });
 }
 
-function makeSimpleProperties(csvFile, propFile, callback){
+function writeSimpleProperties(csvFile, propFile, callback){
     prepareProperties(csvFile, false, (properties) =>{
-        //properties = properties.replace(/\\r/g, '');
         writeToFile(propFile, properties);
     });
 }
@@ -210,10 +212,10 @@ function build(callback){
 
     console.log("building data jsons");
     // makeJsonIndependant("mkr/input/others.csv", "mkr/output/others.json", null);
-    makeProperties("mkr/input/issue.csv", "mkr/output/issues-props.json", null);
-    makeProperties("mkr/input/channels.csv", "mkr/output/channels-props.json", null);
-    makeSimpleProperties("mkr/input/action.csv", "mkr/output/action-props.json", null);
-    makeArrayProperties("mkr/input/recipients/recipients_v2.0.csv", "mkr/output/recipients-props.json", null);
+    writeProperties("mkr/input/issue.csv", "mkr/output/issues-props.json", null);
+    writeProperties("mkr/input/channels.csv", "mkr/output/channels-props.json", null);
+    writeSimpleProperties("mkr/input/action.csv", "mkr/output/action-props.json", null);
+    writeArrayProperties("mkr/input/recipients/recipients_v2.0.csv", "mkr/output/recipients-props.json", null);
     
     createJsonJS("js/emlr/props.js")
     console.log("build completed");
