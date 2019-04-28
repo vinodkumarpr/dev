@@ -1,5 +1,9 @@
-let fs = require("fs");
-//const csv = require('csvtojson');
+var isBrowser =  function() {try {return this === window;}catch(e){ return false;}}
+
+if (!isBrowser()){
+    var fs = require("fs");
+    var csv = require('csvtojson');
+}
 
 let PROPS_KEY = "props";
 let PROP_NAME_KEY = "name";
@@ -141,12 +145,12 @@ function writeToFile(file, data, callback){
 
 var js_json_data = {
     "jsons" : [
-        {
+        /*{
             "name" : "__action_props",
             "title" : "Action details",
             "source" : "../../../mkr/output/action-props.json",
             "element" : "props"
-        },
+        },*/
         {
             "name" : "__channels_props",
             "title" : "Channel details",
@@ -158,8 +162,8 @@ var js_json_data = {
             "title" : "Issue description",
             "source" : "../../../mkr/output/issues-props.json",
             "element" : "props"
-        }
-        /*,
+        }/*
+        ,
         {
             "name" : "__recipients_props",
             "title" : "Recipients",
@@ -248,7 +252,8 @@ function build(callback){
     writeProperties(absolutePath("../../../mkr/input/issue.csv"), absolutePath("../../../mkr/output/issues-props.json"), null);
 }
 
-build_t( () => {
-    //uploadFiles();
-});
-
+if (!isBrowser()) {
+    build_t(() => {
+        //uploadFiles();
+    });
+}

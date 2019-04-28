@@ -2,6 +2,7 @@
 
     var emlrService = function ($http) {
         var emlrFactory = {};
+        var config_name = aws_config['active_config'];
 
         function getHighLevelProps(props, highLevelProps){
             for (let index = 0; index < 1; index++) {
@@ -63,10 +64,32 @@
                 return getFilteredPropOptions(prop["props"], filter.slice(1));
             }
             return null;
-        }                
+        }
+
+        var actionPromise = new Promise((resolve, reject)=>{
+            getS3Object(getS3(aws_config[config_name]), aws_config[config_name]["bucket"], aws_config[config_name]["path"]["action"], (err, data) => {
+                if (!err) {
+                    let text = data.Body.toString('utf-8');
+                    preparePropertiesFromString(text, false, (props) => {
+                        __action_props = JSON.parse(props);
+                        resolve();                        
+                    })                    
+                } else {
+                    console.log("Could not load recipients list from S3");
+                    reject();
+                }
+            });
+        });
 
         emlrFactory.init = function (callback) {
-            callback();
+            actionPromise.then(function(result) {                 
+                console.log("actionPromise:: success")
+            }).catch(function() {
+                console.log("actionPromise:: error")
+            }).finally(function() {
+                console.log("actionPromise:: completed")
+                callback();
+            });            
         };
 
         emlrFactory.getIssues = function() {

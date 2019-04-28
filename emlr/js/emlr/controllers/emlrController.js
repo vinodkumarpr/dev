@@ -8,17 +8,18 @@
 
         var initialize = function () {
             emlrService.init(() => {
-                $scope.issues = {
-                    "props" : emlrService.getIssues()
-                };                
-                $scope.channels = {
-                    "props" : emlrService.getChannels()
-                };
-                $scope.actions = {
-                    "props" : emlrService.getAction()
-                };
-
-                initializeItems();
+                $scope.$apply(()=>{
+                    $scope.issues = {
+                        "props" : emlrService.getIssues()
+                    };                
+                    $scope.channels = {
+                        "props" : emlrService.getChannels()
+                    };
+                    $scope.actions = {
+                        "props" : emlrService.getAction()
+                    };
+                    initializeItems();
+                })
             }); 
         }
 

@@ -31,14 +31,15 @@
         $scope.loadCSV = function () {
             var file = document.getElementById("file_input").files[0];
             recipientService.loadCSV(file, (list)=>{
-                $scope.table_list["columns"] = list.columns.slice(2);
-                $scope.table_list["rows"] = list.rows.map((row) => {
-                    return {
-                        "channel" : row.slice(0, 2),
-                        "recipients" : row.slice(2)
-                    }
-                });
-                console.log("List is " + $scope.table_list);
+                $scope.$apply(()=>{
+                    $scope.table_list["columns"] = list.columns.slice(2);
+                    $scope.table_list["rows"] = list.rows.map((row) => {
+                        return {
+                            "channel" : row.slice(0, 2),
+                            "recipients" : row.slice(2)
+                        }
+                    });    
+                })
             });
         }
 
