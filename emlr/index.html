@@ -273,6 +273,17 @@
                                                                         <td style="background-color: transparent">
                                                                             <i class="fa fa-angle-down rotate-icon"></i>
                                                                         </td>
+                                                                        <td ng-if="editing">
+                                                                            <div ng-if="row.status == 'NEW'">
+                                                                                    <b>{{row.status}}</b>
+                                                                            </div>
+                                                                            <div ng-if="row.status == 'MODIFIED'">
+                                                                                    <b>{{row.status}}</b>
+                                                                            </div>
+                                                                            <div ng-if="row.status == 'SAME'">
+                                                                                    {{row.status}}
+                                                                            </div>
+                                                                        </td>
                                                                     </tr>
                                                                     
                                                                 </table>

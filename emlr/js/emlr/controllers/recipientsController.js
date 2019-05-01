@@ -29,7 +29,8 @@
                     $scope.table_list["rows"] = list.rows.map((row) => {
                         return {
                             "channel" : row.slice(0, 2),
-                            "recipients" : row.slice(2)
+                            "recipients" : row.slice(2),
+                            "status" : row["status"]
                         }
                     });    
                     $scope.editing = true;

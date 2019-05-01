@@ -72,12 +72,12 @@
                 for (let j = 0; j < existing_list.rows.length; j++){
                     let result = compare_rows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
                     if (result == "SAME" || result == "MODIFIED"){
-                        new_list.rows[i]["result"] = result;
+                        new_list.rows[i]["status"] = result;
                         break;
                     }
                 }
-                if (!new_list.rows[i].hasOwnProperty("result")){
-                    new_list.rows[i]["result"] = "NEW";
+                if (!new_list.rows[i].hasOwnProperty("status")){
+                    new_list.rows[i]["status"] = "NEW";
                 }
             }
         }
