@@ -10,15 +10,36 @@
                     let text = data.Body.toString('utf-8');
                     getArrayPropertiesFromString(text, (props) => {
                         __recipients_props = JSON.parse(props);
+                        callback();
                     })
                 } else {
                     console.log("Could not load recipients list from S3");
                 }
             });
-                  
-            callback();
         };
 
+        function make_recipients_table(){
+            if (!__recipients_props){
+                return null; 
+            }
+            let columns = Object.keys(__recipients_props.props[0]);
+            let rows = [];
+            for (let i = 0; i < __recipients_props.props.length; i++){
+                let row = [];
+                for (let j = 0; j < columns.length; j++){
+                    row.push(__recipients_props.props[i][columns[j]]);
+                }
+                rows.push(row); 
+            }
+            return {
+                "columns": columns,
+                "rows": rows
+            };
+        }
+
+        recipientFactory.getRecipients = function(){
+            return make_recipients_table();
+        }
         recipientFactory.init_v1 = function (callback) {
             callback();
         };

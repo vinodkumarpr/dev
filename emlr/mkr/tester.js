@@ -1,5 +1,5 @@
 var props = require('../js/emlr/props')
-
+var recipients_props = require('../mkr/output/recipients-props.json')
 
 function getHighLevelProps(props, highLevelProps){
     for (let index = 0; index < 1; index++) {
@@ -98,4 +98,21 @@ function process(filepath){
     });   
 }
 
-process("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v2.0.csv");
+function make_recipients_table(){
+    let columns = Object.keys(recipients_props.props[0]);
+    let rows = [];
+    for (let i = 0; i < recipients_props.props.length; i++){
+        let row = [];
+        for (let j = 0; j < columns.length; j++){
+            row.push(recipients_props.props[i][columns[j]]);
+        }
+        rows.push(row); 
+    }
+    retunrn {
+        "columns": columns,
+        "rows": rows
+    };
+}
+
+//process("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v2.0.csv");
+make_recipients_table();
