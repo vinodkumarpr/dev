@@ -54,7 +54,7 @@
         }
 
         function updateRecipients(){
-            for (let i = 0; $scope.table_list.rows.length; i++){
+            for (let i = 0; i < $scope.table_list.rows.length; i++){
                 for (let j = 0; j < $scope.table_list.rows[i].recipients.length; j++){
                     var input = document.getElementById('input_' + i + "_" + j);
                     if ($scope.table_list.rows[i].recipients[j] != input.value) {
@@ -67,6 +67,15 @@
 
         $scope.update = function () {
             updateRecipients();
+
+            let rows = $scope.table_list.rows.map((row) => {
+                return row.channel.concat(row.recipients);
+                });
+            let list = {
+                "rows" : rows
+            };
+
+            let updatedList = recipientService.getUpdatedList(list);
         }
 
         onInput = function(id){

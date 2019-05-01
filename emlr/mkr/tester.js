@@ -177,6 +177,8 @@ function combineLists(existing_list, new_list){
         }
     }
 
+    combined_list["columns"] = existing_list.columns;
+
     return combined_list;
 }
 

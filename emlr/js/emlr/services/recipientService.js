@@ -82,6 +82,55 @@
             }
         }
 
+        function combineLists(existing_list, new_list){
+            let combined_list = {
+                "columns": [],
+                "rows" : []
+            };
+            
+            for (let i = 0; i < existing_list.rows.length; i++){
+                let status = "None";
+                let new_item = null;
+                for (let j = 0; j < new_list.rows.length; j++){
+                    let result = compareRows(existing_list.rows[i], new_list.rows[j], 2, existing_list.columns.length);
+                    if (result == "MODIFIED"){
+                        status = result; 
+                        new_item = new_list.rows[j];
+                        break;
+                    }
+                }
+                if (status == "MODIFIED"){
+                    combined_list.rows.push(new_item);
+                } else {
+                    combined_list.rows.push(existing_list.rows[i]);
+                }
+            }
+            for (let i = 0; i < new_list.rows.length; i++){
+                let status = "None";
+                for (let j = 0; j < existing_list.rows.length; j++){
+                    let result = compareRows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
+                    if (result == "SAME" || result == "MODIFIED"){
+                        status = result;
+                        break;
+                    }
+                }
+                if (status == "None") {
+                    combined_list.rows.push(new_list.rows[i]);
+                }
+            }
+        
+            combined_list["columns"] = existing_list.columns;
+        
+            return combined_list;
+        }
+
+        recipientFactory.getUpdatedList = function(newList){
+            let existingList = makeRecipientsTable();
+            let combinedList = combineLists(existingList, newList);
+            console.log(combinedList);
+            return combinedList;
+        }
+
         recipientFactory.loadCSV = function (file, callback) {
             var reader = new FileReader();
             reader.onloadend = function (e) {
@@ -102,6 +151,8 @@
             };
             reader.readAsText(file);
         }
+
+
         return recipientFactory;
     };
     app.factory("recipientService", recipientService);
