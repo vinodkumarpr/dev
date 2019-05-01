@@ -14,7 +14,12 @@
                         "recipients" : row.slice(2)
                     }
                 });
-            }); 
+            });
+
+            var file_input = document.getElementById('file_input');
+            file_input.addEventListener("change", function () {
+                $scope.loadCSV();
+              });
         }
 
         $scope.$on('recipients-display-updated', function(event, value) {

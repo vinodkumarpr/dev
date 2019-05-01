@@ -241,9 +241,8 @@
                         <!--Card content-->
                         <div class="card-body">
                             <div class="container-fluid" style="background-color:transparent">
-                                Upload csv file<br><br>
-                                <input class="file" type="file" id="file_input">
-                                <button class="btn btn-default" type="button" ng-click="loadCSV()">Load</button>
+                                <input id="file_input" type="file" name="name" style="display: none;" onchange="loadCSV()"/>
+                                <button class="btn btn-default" type="button" onclick="document.getElementById('file_input').click();">Load from CSV</button>
                                 </p>
                             </div>
                             <!-- Table  -->
@@ -368,6 +367,7 @@
     <script src="js/emlr/services/config.js"></script>
     <script src="js/emlr/services/prepareProps.js"></script>
     <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 </body>
 
