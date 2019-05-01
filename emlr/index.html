@@ -241,9 +241,10 @@
                         <!--Card content-->
                         <div class="card-body">
                             <div class="container-fluid" style="background-color:transparent">
-                                <input id="file_input" type="file" name="name" style="display: none;" onchange="loadCSV()"/>
+                                <input id="file_input" type="file" name="name" style="display: none;"/>
                                 <button class="btn btn-default" type="button" onclick="document.getElementById('file_input').click();">Load from CSV</button>
-                                </p>
+                                <button class="btn btn-default" type="button" ng-click="update()" ng-if="editing">Update</button>
+                                <button class="btn btn-default" type="button" ng-click="cancel()" ng-if="editing">Cancel</button>
                             </div>
                             <!-- Table  -->
                             <table class="table table-hover table-sm table-borderless">
