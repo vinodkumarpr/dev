@@ -3,6 +3,7 @@
     var recipientService = function ($http) {
         var recipientFactory = {};
         var config_name = aws_config['active_config'];
+        var loadedRecipients;
 
         recipientFactory.init = function (callback) {
             getS3Object(getS3(aws_config[config_name]), aws_config[config_name]["bucket"], aws_config[config_name]["path"]["recipients"], (err, data) => {
@@ -44,6 +45,43 @@
             callback();
         };
 
+        function compare_rows(row1, row2, num_elem_cols, num_cols){
+            let matching = true;
+            for (let i = 0; i < num_elem_cols; i++){
+                if (row1[i] != row2[i]){
+                    matching = false;
+                    break;
+                }
+            }
+            if (!matching){
+                return "DIFFERENT"
+            }
+        
+            for (let i = num_elem_cols; i < num_cols; i++){
+                if (row1[i] != row2[i]){
+                    matching = false;
+                    break;
+                }
+            }
+        
+            return matching ? "SAME" : "MODIFIED";
+        }
+
+        function update_status(existing_list, new_list){
+            for (let i = 0; i < new_list.rows.length; i++){
+                for (let j = 0; j < existing_list.rows.length; j++){
+                    let result = compare_rows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
+                    if (result == "SAME" || result == "MODIFIED"){
+                        new_list.rows[i]["result"] = result;
+                        break;
+                    }
+                }
+                if (!new_list.rows[i].hasOwnProperty("result")){
+                    new_list.rows[i]["result"] = "NEW";
+                }
+            }
+        }
+
         recipientFactory.loadCSV = function (file, callback) {
             var reader = new FileReader();
             reader.onloadend = function (e) {
@@ -53,11 +91,13 @@
                 })
                     .fromString(e.target.result)
                     .then(function (result) {
-                        let list = {
+                        let existing_list = make_recipients_table();
+                        loadedRecipients = {
                             "columns": result[0],
                             "rows": result.slice(1)
                         }
-                        callback(list);
+                        update_status(existing_list, loadedRecipients);
+                        callback(loadedRecipients);
                     });
             };
             reader.readAsText(file);

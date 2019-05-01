@@ -2,6 +2,7 @@
     var recipientsController = function ($scope, $http, recipientService) {
         $scope.showRecipientLayout = false;
         $scope.table_list = {};
+        $scope.editing = false;
 
         var initialize = function () {
             recipientService.init(() => {
@@ -31,6 +32,7 @@
                             "recipients" : row.slice(2)
                         }
                     });    
+                    $scope.editing = true;
                 })
             });
         }

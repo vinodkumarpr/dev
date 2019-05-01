@@ -294,7 +294,7 @@
                                                                     <td style="background-color: transparent" width="40%">
                                                                         {{item}}
                                                                     </td>
-                                                                    <td width="40%">
+                                                                    <td width="40%" ng-if="editing">
                                                                         <input class="form-control" id='{{"input" + rowIndex + "_" + $index}}' value='{{item}}' />
                                                                     </td>
                                                                 </tr>

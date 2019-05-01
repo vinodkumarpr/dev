@@ -87,14 +87,18 @@ function testprops(){
 }
 
 
-function process(filepath){
+function process(filepath, callback){
     const csv = require('csvtojson')
     csv({
 	    noheader : true,
         output : "csv"    
     }).fromFile(filepath)
-    .then((csvRow) => {
-        console.log(csvRow);
+    .then((result) => {
+        let list = {
+            "columns": result[0],
+            "rows": result.slice(1)
+        }
+        callback(list);
     });   
 }
 
@@ -108,11 +112,61 @@ function make_recipients_table(){
         }
         rows.push(row); 
     }
-    retunrn {
+    return {
         "columns": columns,
         "rows": rows
     };
 }
 
-//process("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v2.0.csv");
-make_recipients_table();
+function compare_rows(row1, row2, num_elem_cols, num_cols){
+    let matching = true;
+    for (let i = 0; i < num_elem_cols; i++){
+        if (row1[i] != row2[i]){
+            matching = false;
+            break;
+        }
+    }
+    if (!matching){
+        return "DIFFERENT"
+    }
+
+    for (let i = num_elem_cols; i < num_cols; i++){
+        if (row1[i] != row2[i]){
+            matching = false;
+            break;
+        }
+    }
+
+    return matching ? "SAME" : "MODIFIED";
+}
+
+function update_status(existing_list, new_list){
+    for (let i = 0; i < new_list.rows.length; i++){
+        for (let j = 0; j < existing_list.rows.length; j++){
+            let result = compare_rows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
+            if (result == "SAME" || result == "MODIFIED"){
+                new_list.rows[i]["result"] = result;
+                break;
+            }
+        }
+        if (!new_list.rows[i].hasOwnProperty("result")){
+            new_list.rows[i]["result"] = "NEW";
+        }
+    }
+}
+
+function compare(filepath){
+    let recipients = make_recipients_table();
+    let new_list;
+    process(filepath, (list) => {
+        new_list = list;
+        update_status(recipients, new_list)
+
+        for (let i = 0; i < new_list.rows.length; i++){
+            console.log(new_list.rows[i][0], new_list.rows[i][1], new_list.rows[i]["result"]);
+        }
+    });
+}
+
+compare("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v3.0.csv");
+//make_recipients_table();
