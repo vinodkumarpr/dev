@@ -53,9 +53,32 @@
             loadRecipients();
         }
 
-        $scope.update = function (){
-
+        function updateRecipients(){
+            for (let i = 0; $scope.table_list.rows.length; i++){
+                for (let j = 0; j < $scope.table_list.rows[i].recipients.length; j++){
+                    var input = document.getElementById('input_' + i + "_" + j);
+                    if ($scope.table_list.rows[i].recipients[j] != input.value) {
+                        $scope.table_list.rows[i].status = "MODIFIED";
+                        $scope.table_list.rows[i].recipients[j] = input.value;
+                    }
+                }
+            }
         }
+
+        $scope.update = function () {
+            updateRecipients();
+        }
+
+        onInput = function(id){
+            console.log(id);
+            splits = id.split('_');
+            var input = document.getElementById(id);
+            $scope.$apply(()=>{
+                $scope.table_list.rows[parseInt(splits[1])].status = "MODIFIED";
+                $scope.table_list.rows[parseInt(splits[1])].recipients[parseInt(splits[2])] = input.value;
+            });
+        }
+
        initialize();
     };
     app.controller("recipientsController", ["$scope", "$http", "recipientService", recipientsController]);

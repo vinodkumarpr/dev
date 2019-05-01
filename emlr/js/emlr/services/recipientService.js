@@ -19,7 +19,7 @@
             });
         };
 
-        function make_recipients_table(){
+        function makeRecipientsTable(){
             if (!__recipients_props){
                 return null; 
             }
@@ -39,13 +39,13 @@
         }
 
         recipientFactory.getRecipients = function(){
-            return make_recipients_table();
+            return makeRecipientsTable();
         }
         recipientFactory.init_v1 = function (callback) {
             callback();
         };
 
-        function compare_rows(row1, row2, num_elem_cols, num_cols){
+        function compareRows(row1, row2, num_elem_cols, num_cols){
             let matching = true;
             for (let i = 0; i < num_elem_cols; i++){
                 if (row1[i] != row2[i]){
@@ -67,10 +67,10 @@
             return matching ? "SAME" : "MODIFIED";
         }
 
-        function update_status(existing_list, new_list){
+        function updateStatus(existing_list, new_list){
             for (let i = 0; i < new_list.rows.length; i++){
                 for (let j = 0; j < existing_list.rows.length; j++){
-                    let result = compare_rows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
+                    let result = compareRows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
                     if (result == "SAME" || result == "MODIFIED"){
                         new_list.rows[i]["status"] = result;
                         break;
@@ -91,12 +91,12 @@
                 })
                     .fromString(e.target.result)
                     .then(function (result) {
-                        let existing_list = make_recipients_table();
+                        let existing_list = makeRecipientsTable();
                         loadedRecipients = {
                             "columns": result[0],
                             "rows": result.slice(1)
                         }
-                        update_status(existing_list, loadedRecipients);
+                        updateStatus(existing_list, loadedRecipients);
                         callback(loadedRecipients);
                     });
             };

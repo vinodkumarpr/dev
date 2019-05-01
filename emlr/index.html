@@ -306,7 +306,7 @@
                                                                         {{item}}
                                                                     </td>
                                                                     <td width="40%" ng-if="editing">
-                                                                        <input class="form-control" id='{{"input" + rowIndex + "_" + $index}}' value='{{item}}' />
+                                                                        <input class="form-control" id='{{"input_" + rowIndex + "_" + $index}}' oninput="onInput(this.id)" value='{{item}}' />
                                                                     </td>
                                                                 </tr>
                                                             </table>

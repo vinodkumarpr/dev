@@ -102,7 +102,7 @@ function process(filepath, callback){
     });   
 }
 
-function make_recipients_table(){
+function makeRecipientsTable(){
     let columns = Object.keys(recipients_props.props[0]);
     let rows = [];
     for (let i = 0; i < recipients_props.props.length; i++){
@@ -118,7 +118,7 @@ function make_recipients_table(){
     };
 }
 
-function compare_rows(row1, row2, num_elem_cols, num_cols){
+function compareRows(row1, row2, num_elem_cols, num_cols){
     let matching = true;
     for (let i = 0; i < num_elem_cols; i++){
         if (row1[i] != row2[i]){
@@ -140,33 +140,79 @@ function compare_rows(row1, row2, num_elem_cols, num_cols){
     return matching ? "SAME" : "MODIFIED";
 }
 
-function update_status(existing_list, new_list){
-    for (let i = 0; i < new_list.rows.length; i++){
-        for (let j = 0; j < existing_list.rows.length; j++){
-            let result = compare_rows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
-            if (result == "SAME" || result == "MODIFIED"){
-                new_list.rows[i]["result"] = result;
+function combineLists(existing_list, new_list){
+    let combined_list = {
+        "columns": [],
+        "rows" : []
+    };
+    
+    for (let i = 0; i < existing_list.rows.length; i++){
+        let status = "None";
+        let new_item = null;
+        for (let j = 0; j < new_list.rows.length; j++){
+            let result = compareRows(existing_list.rows[i], new_list.rows[j], 2, existing_list.columns.length);
+            if (result == "MODIFIED"){
+                status = result; 
+                new_item = new_list.rows[j];
                 break;
             }
         }
-        if (!new_list.rows[i].hasOwnProperty("result")){
-            new_list.rows[i]["result"] = "NEW";
+        if (status == "MODIFIED"){
+            combined_list.rows.push(new_item);
+        } else {
+            combined_list.rows.push(existing_list.rows[i]);
+        }
+    }
+    for (let i = 0; i < new_list.rows.length; i++){
+        let status = "None";
+        for (let j = 0; j < existing_list.rows.length; j++){
+            let result = compareRows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
+            if (result == "SAME" || result == "MODIFIED"){
+                status = result;
+                break;
+            }
+        }
+        if (status == "None") {
+            combined_list.rows.push(new_list.rows[i]);
+        }
+    }
+
+    return combined_list;
+}
+
+function updateStatus(existing_list, new_list){
+    for (let i = 0; i < new_list.rows.length; i++){
+        for (let j = 0; j < existing_list.rows.length; j++){
+            let result = compareRows(new_list.rows[i], existing_list.rows[j], 2, existing_list.columns.length);
+            if (result == "SAME" || result == "MODIFIED"){
+                new_list.rows[i]["status"] = result;
+                break;
+            }
+        }
+        if (!new_list.rows[i].hasOwnProperty("status")){
+            new_list.rows[i]["status"] = "NEW";
         }
     }
 }
 
 function compare(filepath){
-    let recipients = make_recipients_table();
+    let recipients = makeRecipientsTable();
     let new_list;
     process(filepath, (list) => {
         new_list = list;
-        update_status(recipients, new_list)
+        updateStatus(recipients, new_list)
 
         for (let i = 0; i < new_list.rows.length; i++){
-            console.log(new_list.rows[i][0], new_list.rows[i][1], new_list.rows[i]["result"]);
+            console.log(new_list.rows[i][0], new_list.rows[i][1], new_list.rows[i]["status"]);
         }
+
+        let combined_list = combineLists(recipients, new_list);
+        for (let i = 0; i < combined_list.rows.length; i++){
+            console.log(combined_list.rows[i][0], combined_list.rows[i][1]);
+        }
+
     });
 }
 
 compare("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v3.0.csv");
-//make_recipients_table();
+//makeRecipientsTable();
