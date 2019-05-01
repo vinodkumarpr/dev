@@ -286,12 +286,16 @@
                                                         <div class="card-body">
                                                             <table class="table table-sm table-borderless"
                                                                 style="background-color: transparent">
+                                                                <data ng-init="rowIndex= $index"/>
                                                                 <tr ng-repeat="item in row.recipients track by $index">
                                                                     <td style="background-color: transparent" width="20%">
                                                                         {{table_list.columns[$index]}}
                                                                     </td>
-                                                                    <td style="background-color: transparent">
+                                                                    <td style="background-color: transparent" width="40%">
                                                                         {{item}}
+                                                                    </td>
+                                                                    <td width="40%">
+                                                                        <input class="form-control" id='{{"input" + rowIndex + "_" + $index}}' value='{{item}}' />
                                                                     </td>
                                                                 </tr>
                                                             </table>
