@@ -197,6 +197,22 @@ function updateStatus(existing_list, new_list){
     }
 }
 
+function getJsonToCSV(data){
+    const NEW_LINE = "\n";
+    let header = data.columns.map((column) => {
+        return '"' + column + '"';
+    }).join(",");
+
+    let rows = data.rows.map((row) => {
+        return row.map((item) => {
+            return '"' + item + '"';
+        }).join(",");
+    }).join(NEW_LINE);
+
+    let csv = [header, rows].join(NEW_LINE)
+    return csv;
+}
+
 function compare(filepath){
     let recipients = makeRecipientsTable();
     let new_list;
@@ -212,9 +228,95 @@ function compare(filepath){
         for (let i = 0; i < combined_list.rows.length; i++){
             console.log(combined_list.rows[i][0], combined_list.rows[i][1]);
         }
-
+        let csv = getJsonToCSV(combined_list);
+        putRequest("253ad866cf61fb86afb02665368f5f60f03f1e63", '/vinodkumarpr/dev/working/emlr/store/recipients.csv', csv, "text/csv");
     });
 }
+
+//curl -i -H "Authorization: token  6d7828c032cfb08eef29d346f12d7819515a1883" https://raw.githubusercontent.com/vinodkumarpr/dev/working/README^C
+
+// curl -X GET -u 253ad866cf61fb86afb02665368f5f60f03f1e63:x-oauth-basic 'https://api.github.com/user'
+// curl -X GET -u 253ad866cf61fb86afb02665368f5f60f03f1e63:x-oauth-basic 'https://api.github.com/users/vinodkumarpr/repos'
+// curl -X GET -u 253ad866cf61fb86afb02665368f5f60f03f1e63:x-oauth-basic "https://api.github.com/repos/vinodkumarpr/dev/downloads"
+
+function getRequest(token, path){
+    const https = require('https')
+
+    authToken = 'token  ' + token;
+    const options = {
+        hostname: 'raw.githubusercontent.com',
+        port: 443,
+        path: path,
+        method: 'GET',
+        headers: {
+          'Authorization': authToken,
+          'User-Agent' : 'git-user-app'
+        }
+      }
+      
+      const req = https.request(options, (res) => {
+        console.log(`statusCode: ${res.statusCode}`)            
+        res.on('data', (d) => {
+            console.log("body " + d)
+        })
+        res.on("end", () => {
+            console.log("end")
+        });
+      })
+      
+      req.on('error', (error) => {
+        console.error(error)
+      })
+      
+      req.end()
+}
+
+function putRequest(token, path, data, contentType){
+    const https = require('https')
+
+    authToken = 'token  ' + token;
+    const options = {
+        hostname: 'raw.githubusercontent.com',
+        port: 443,
+        path: path,
+        method: 'PUT',
+        headers: {
+          'Authorization': authToken,
+          'Content-Type': 'application/json',
+          'Content-Length': data.length
+        }
+      }
+      
+      const req = https.request(options, (res) => {
+        console.log(`statusCode: ${res.statusCode}`)
+            
+        res.on('data', (d) => {
+            console.log("body " + d)
+        })
+
+        res.on('end', () => {
+            console.log("end")
+        })
+      })
+      
+      req.on('error', (error) => {
+        console.error(error)
+      })
+
+      req.write(data)
+      
+      req.end()
+}
+
+
+// git_token = "6d7828c032cfb08eef29d346f12d7819515a1883"
+token = "253ad866cf61fb86afb02665368f5f60f03f1e63"
+
+//getRequest("6d7828c032cfb08eef29d346f12d7819515a1883", '/vinodkumarpr/dev/working/emlr/store/recipients.csv');
+
+// setTimeout(function afterTwoSeconds() {
+//     console.log('20')
+//   }, 20000)
 
 compare("/home/vinod/wrkng/rpstry/dev/emlr/mkr/input/recipients/recipients_v3.0.csv");
 //makeRecipientsTable();

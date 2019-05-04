@@ -2,20 +2,23 @@
 
     var recipientService = function ($http) {
         var recipientFactory = {};
-        var config_name = aws_config['active_config'];
+        var config_name = config['active_config'];
         var loadedRecipients;
 
         recipientFactory.init = function (callback) {
-            getS3Object(getS3(aws_config[config_name]), aws_config[config_name]["bucket"], aws_config[config_name]["path"]["recipients"], (err, data) => {
-                if (!err) {
-                    let text = data.Body.toString('utf-8');
-                    getArrayPropertiesFromString(text, (props) => {
-                        __recipients_props = JSON.parse(props);
-                        callback();
-                    })
-                } else {
-                    console.log("Could not load recipients list from S3");
-                }
+            const client = new GitClient($http, config['git_config']['token'], () => {
+                client.getFile("dev", "working", "emlr/store/recipients.csv", (file)=>{
+                    console.log(file);
+                    if (file.encoding == "base64"){
+                        let text = atob(file.content);
+                        getArrayPropertiesFromString(text, (props) => {
+                            __recipients_props = JSON.parse(props);
+                            callback();
+                        })
+                    } else {
+                        console.log("Could not load recipients list from S3");
+                    }
+                });
             });
         };
 

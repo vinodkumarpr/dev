@@ -2,7 +2,7 @@
 
     var emlrService = function ($http) {
         var emlrFactory = {};
-        var config_name = aws_config['active_config'];
+        var config_name = config['active_config'];
 
         function getHighLevelProps(props, highLevelProps){
             for (let index = 0; index < 1; index++) {
@@ -67,7 +67,7 @@
         }
 
         var actionPromise = new Promise((resolve, reject)=>{
-            getS3Object(getS3(aws_config[config_name]), aws_config[config_name]["bucket"], aws_config[config_name]["path"]["action"], (err, data) => {
+            getS3Object(getS3(config[config_name]), config[config_name]["bucket"], config[config_name]["path"]["action"], (err, data) => {
                 if (!err) {
                     let text = data.Body.toString('utf-8');
                     preparePropertiesFromString(text, false, (props) => {
