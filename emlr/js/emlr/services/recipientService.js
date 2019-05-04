@@ -4,9 +4,10 @@
         var recipientFactory = {};
         var config_name = config['active_config'];
         var loadedRecipients;
+        var client;
 
         recipientFactory.init = function (callback) {
-            const client = new GitClient($http, config['git_config']['token'], () => {
+            client = new GitClient($http, config['git_config']['token'], () => {
                 client.getFile("dev", "working", "emlr/store/recipients.csv", (file)=>{
                     console.log(file);
                     if (file.encoding == "base64"){
@@ -132,6 +133,30 @@
             let combinedList = combineLists(existingList, newList);
             console.log(combinedList);
             return combinedList;
+        }
+
+        recipientFactory.getJsonToCSV = function (data){
+            const NEW_LINE = "\n";
+            let header = data.columns.map((column) => {
+                return '"' + column + '"';
+            }).join(",");
+        
+            let rows = data.rows.map((row) => {
+                return row.map((item) => {
+                    return '"' + item + '"';
+                }).join(",");
+            }).join(NEW_LINE);
+        
+            let csv = [header, rows].join(NEW_LINE)
+            return csv;
+        }
+
+        recipientFactory.updateStore = function (csv, callback) {
+            let message = "Updating recipients"
+            client.updateFile("dev", "working", "emlr/store/recipients.csv", csv, message, (data)=>{
+                console.log(data);
+                callback();
+            });
         }
 
         recipientFactory.loadCSV = function (file, callback) {

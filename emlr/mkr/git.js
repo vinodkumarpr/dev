@@ -161,7 +161,6 @@ class GitClient {
     }
 }
 
-var GIT_TOKEN = '253ad866cf61fb86afb02665368f5f60f03f1e63';
 const client = new GitClient(GIT_TOKEN, () => {
     client.getFile("dev", "working", "emlr/mkr/make_jsons.js", (data)=>{
         let buff = new Buffer(data.content, 'base64');

@@ -6,7 +6,7 @@
 
         var initialize = function () {
             recipientService.init(() => {
-                loadRecipients()
+                loadRecipients();
             });
 
             var file_input = document.getElementById('file_input');
@@ -76,6 +76,10 @@
             };
 
             let updatedList = recipientService.getUpdatedList(list);
+            let csv = recipientService.getJsonToCSV(updatedList);
+            recipientService.updateStore(csv, ()=>{
+                loadRecipients();
+            })
         }
 
         onInput = function(id){

@@ -1,7 +1,4 @@
-//const url = require('url');
-
 var GIT_API_USER_URL = 'https://api.github.com/user';
-var GIT_USER = "/user";
 
 class GitClient {
     constructor($http, token, callback) {
@@ -42,7 +39,7 @@ class GitClient {
         });
     }
 
-    updateFile(repoName, branch, path, content, message) {
+    updateFile(repoName, branch, path, content, message, callback) {
         this.getRepos(() => {
             this.getFile(repoName, branch, path, (file) => {
                 let update = {
@@ -60,6 +57,7 @@ class GitClient {
                 }
                 this.putRequest(contentUrl, update, (err, data) => {
                     console.log(data);
+                    callback(data);
                 });
             });
         });
@@ -118,7 +116,6 @@ class GitClient {
     }
 }
 
-var GIT_TOKEN = '253ad866cf61fb86afb02665368f5f60f03f1e63';
 // const client = new GitClient(GIT_TOKEN, () => {
 //     client.getFile("dev", "working", "emlr/mkr/make_jsons.js", (data)=>{
 //         let buff = new Buffer(data.content, 'base64');
