@@ -1,0 +1,73 @@
+
+# Create virtualenv, activate it
+virtualenv venv -p python3
+source ./venv/bin/activate
+
+# Install Flask and freeze requirements
+pip install Flask
+pip freeze > requirements.txt
+
+# Create app.py
+
+################################################
+
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({ "status" : "succeeded" })
+
+################################################
+
+# Create serverless.yml
+
+service: <app-name>
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-east-1
+  memorySize: 128
+
+# Add sls plugins
+sls plugin install -n serverless-wsgi
+sls plugin install -n serverless-python-requirements
+
+# This adds entries in serverless.yml
+
+# Add additional details to serverless.yml
+
+custom:
+  wsgi:
+    app: app.app
+    packRequirements: false
+
+functions:
+  app:
+    handler: wsgi.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+# Test locally
+
+sls wsgi serve
+
+# Terminal displays http://localhost:<port> (http://localhost:5000/) where local server is listening
+# Access using Web Browser and test the link http://localhost:5000/
+
+# Add AWS profile to serverless.yml
+# profile is from ~/.aws/credentials
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-east-1
+  memorySize: 128
+  profile: garage_onb
+
+
