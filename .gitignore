@@ -3,3 +3,4 @@ build
 data
 config.js
 wrds/npm-debug.log
+*-prod.json

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>emlr</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="grey" ng-app="emlrApp" class="ng-scope">
+
+    <!--Main Navigation-->
+    <header ng-controller="headerController" ng-cloak>
+
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <div class="container-fluid">
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li ng-repeat="item in header.items" class="{{item.class}}"">
+                                <a href=" #" class="{{item.linkClass}}" ng-click="headerSelected($index)">
+                            <i class="{{item.iconClass}}"></i>{{item.title}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    <main class="pt-5" id="mainlayout" ng-controller="emlrController" ng-show="showMainLayout" ngcloak>
+        <div class="container-fluid mt-5">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-12 mb-1">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <div class="container-fluid" style="background-color:transparent">
+                                <div class="col top-buffer vert-condensed" style="margin: 0%">
+                                    <table class="table vert-condensed table-bordered">
+                                        <th class="vert-condensed"
+                                            style="vertical-align: top; margin-left: 0px;width: 15%;">Recipient</th>
+                                        <td class="vert-condensed" style="width: 85%;">
+                                            <div id="email_recipients">
+                                                <textarea id="email_recipients_text" class="form-control"
+                                                    style="vertical-align: top; margin-left: 10px; width: 100%">{{recipients}}</textarea>
+                                            </div>
+                                        </td>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+        <div class="container-fluid ">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-12 mb-1">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <div class="container-fluid" style="background-color:transparent ">
+                                <div class="row">
+                                    <div class="col top-buffer">
+                                        <div id="details_container" style="width:100%;background-color:azure">
+                                            <div class="row wow fadeIn">
+                                                <!--Grid column-->
+                                                <div class="col-md-12">
+                                                    <!--Card-->
+                                                    <div class="card mt-1">
+                                                        <!--Card content-->
+                                                        <div class="card-body">
+                                                            <!-- Table  -->
+                                                            <table class="table table-sm table-hover table-borderless">
+                                                                <!-- Table body -->
+                                                                <tbody>
+                                                                    <tr ng-repeat="issueItem in issues.props"
+                                                                        padding-top="0px">
+                                                                        <th valign="middle" scope="row" width="13%">
+                                                                            <span
+                                                                                class="label label-warning">{{issueItem}}</span>
+                                                                        </th>
+                                                                        <td width="42%">
+                                                                            <select class='form-control'
+                                                                                ng-model=issues.selected[issueItem]
+                                                                                ng-change="issuesSelectionChanged(issueItem)"
+                                                                                name="{{SelectControlIdPrefix + issueItem}}"
+                                                                                id="{{SelectControlIdPrefix + issueItem}}">''
+                                                                                <option
+                                                                                    ng-repeat="option in getIssueOptions(issueItem)"
+                                                                                    value="{{option}}">
+                                                                                    {{option}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td width="45%">
+                                                                            <input type="text" class="form-control"
+                                                                                id="{{InputControlIdPrefix + issueItem}}"
+                                                                                value="{{issues.selected[issueItem]}}" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <!-- Table body -->
+                                                            </table>
+                                                            <!-- Table  -->
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Card-->
+                                                    <!--Card-->
+                                                    <div class="card mt-1">
+                                                        <!--Card content-->
+                                                        <div class="card-body">
+                                                            <!-- Table  -->
+                                                            <table class="table table-hover table-borderless">
+                                                                <!-- Table body -->
+                                                                <tbody>
+                                                                    <tr ng-repeat="channelItem in channels.props">
+                                                                        <th valign="middle" scope="row" width="13%">
+                                                                            <label>{{channelItem}}</label></th>
+                                                                        <td width="42%">
+                                                                            <select class='form-control'
+                                                                                ng-model=channels.selected[channelItem]
+                                                                                ng-change="channelsSelectionChanged(channelItem)"
+                                                                                name="{{SelectControlIdPrefix + channelItem}}"
+                                                                                id="{{SelectControlIdPrefix + channelItem}}">''
+                                                                                <option
+                                                                                    ng-repeat="option in getChannelOptions(channelItem)"
+                                                                                    value="{{option}}">
+                                                                                    {{option}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td width="45%">
+                                                                            <input type="text"
+                                                                                class="form-control input-sm"
+                                                                                id="{{InputControlIdPrefix + channelItem}}"
+                                                                                value="{{channels.selected[channelItem]}}" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <!-- Table body -->
+                                                            </table>
+                                                            <!-- Table  -->
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Card-->
+                                                    <!--Card-->
+                                                    <div class="card mt-1">
+                                                        <!--Card content-->
+                                                        <div class="card-body">
+                                                            <!-- Table  -->
+                                                            <table class="table table-hover table-borderless">
+                                                                <!-- Table body -->
+                                                                <tbody>
+                                                                    <tr ng-repeat="actionItem in actions.props">
+                                                                        <th valign="middle" scope="row" width="13%">
+                                                                            <label>{{actionItem}}</label></th>
+                                                                        <td width="42%">
+                                                                            <select class='form-control'
+                                                                                ng-model=actions.selected[actionItem]
+                                                                                ng-change="actionsSelectionChanged(actionItem)"
+                                                                                name="{{SelectControlIdPrefix + actionItem}}"
+                                                                                id="{{SelectControlIdPrefix + actionItem}}">''
+                                                                                <option
+                                                                                    ng-repeat="option in getActionOptions(actionItem)"
+                                                                                    value="{{option}}">
+                                                                                    {{option}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </td>
+                                                                        <td width="45%">
+                                                                            <input type="text"
+                                                                                class="form-control input-sm"
+                                                                                id="{{InputControlIdPrefix + actionItem}}"
+                                                                                value="{{actions.selected[actionItem]}}" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <!-- Table body -->
+                                                            </table>
+                                                            <!-- Table  -->
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Card-->
+                                                </div>
+                                                <!--Grid column-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </div>
+    </main>
+    <!--Main layout-->
+    <!-- Recipients layout -->
+    <main class="pt-5" id="recipientslayout" ng-controller="recipientsController" ng-show="showRecipientLayout" ngcloak>
+
+        <div class="container-fluid mt-5">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-12 mb-1">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <div class="container-fluid" style="background-color:transparent">
+                                <input id="file_input" type="file" name="name" style="display: none;"/>
+                                <button class="btn btn-default" type="button" onclick="document.getElementById('file_input').click();">Load from CSV</button>
+                                <button class="btn btn-default" type="button" ng-click="update()" ng-if="editing">Update</button>
+                                <button class="btn btn-default" type="button" ng-click="cancel()" ng-if="editing">Cancel</button>
+                            </div>
+                            <!-- Table  -->
+                            <table class="table table-hover table-sm table-borderless">
+                                <!-- Table body -->
+                                <tbody>
+                                    <tr ng-repeat="row in table_list.rows track by $index">
+                                        <td>
+                                            <!--Accordion wrapper-->
+                                            <div class="accordion md-accordion" id="{{'accordionEx' + $index}}" role="tablist"
+                                                aria-multiselectable="true">
+                                                <!-- Accordion card -->
+                                                <div class="card">
+
+                                                    <!-- Card header -->
+                                                    <div class="card-header" role="tab" id="{{'headingOne' + $index}}">
+                                                        <a data-toggle="collapse" data-parent="{{'#' + 'accordionEx' + $index}}"
+                                                            href="{{'#' + 'collapseOne' + $index}}" aria-expanded="true"
+                                                            aria-controls="{{'collapseOne' + $index}}">
+                                                            <div class="mb-0">
+                                                                <table>
+                                                                    <tr style="background-color: transparent">
+                                                                        <th ng-repeat="item in row.channel track by $index"
+                                                                            style="word-wrap: break-word" style="background-color: transparent">
+                                                                            {{item}}
+                                                                        </th>
+                                                                        <td style="background-color: transparent">
+                                                                            <i class="fa fa-angle-down rotate-icon"></i>
+                                                                        </td>
+                                                                        <td ng-if="editing">
+                                                                            <div ng-if="row.status == 'NEW'">
+                                                                                    <b>{{row.status}}</b>
+                                                                            </div>
+                                                                            <div ng-if="row.status == 'MODIFIED'">
+                                                                                    <b>{{row.status}}</b>
+                                                                            </div>
+                                                                            <div ng-if="row.status == 'SAME'">
+                                                                                    {{row.status}}
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+                                                                </table>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+                                                    <!-- Card body -->
+                                                    <div id="{{'collapseOne' + $index}}" class="collapse hide" role="tabpanel"
+                                                        aria-labelledby="{{'headingOne' + $index}}" data-parent="{{'#' + 'accordionEx' + $index}}">
+                                                        <div class="card-body">
+                                                            <table class="table table-sm table-borderless"
+                                                                style="background-color: transparent">
+                                                                <data ng-init="rowIndex= $index"/>
+                                                                <tr ng-repeat="item in row.recipients track by $index">
+                                                                    <td style="background-color: transparent" width="20%">
+                                                                        {{table_list.columns[$index]}}
+                                                                    </td>
+                                                                    <td style="background-color: transparent" width="40%">
+                                                                        {{item}}
+                                                                    </td>
+                                                                    <td width="40%" ng-if="editing">
+                                                                        <input class="form-control" id='{{"input_" + rowIndex + "_" + $index}}' oninput="onInput(this.id)" value='{{item}}' />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- Accordion card -->
+
+
+                                            </div>
+                                            <!-- Accordion wrapper -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!-- Table body -->
+                            </table>
+                            <!-- Table  -->
+                        </div>
+                    </div>
+                </div>
+                <!--/.Card-->
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        </div>
+
+    </main>
+    <!-- Recipients layout -->
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/aws-sdk.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+    <script src="js/emlr/props.js"></script>
+    <script src="js/emlr/emlrApp.js"></script>
+    <script src="js/emlr/controllers/emlrController.js"></script>
+    <script src="js/emlr/controllers/headerController.js"></script>
+    <script src="js/emlr/controllers/recipientsController.js"></script>
+    <script src="js/emlr/services/emlrService.js"></script>
+    <script src="js/emlr/services/recipientService.js"></script>
+    <script src="js/emlr/services/awshelper.js"></script>
+    <script src="js/emlr/services/config.js"></script>
+    <script src="js/emlr/services/prepareProps.js"></script>
+    <script src="js/emlr/services/githelper.js"></script>
+    <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+</body>
+
+</html>
